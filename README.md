@@ -1,3 +1,3 @@
-# Sportify -
-Hack Challenge (AppDev)
+# Sportify App-
+Hack Challenge (Cornell AppDev)
 
