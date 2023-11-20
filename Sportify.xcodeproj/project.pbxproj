@@ -14,6 +14,9 @@
 		F1B3603B2B096ECB0099CC8E /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B3603A2B096ECB0099CC8E /* ProfilePageController.swift */; };
 		F1B360402B0976530099CC8E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F1B3603F2B0976530099CC8E /* Alamofire */; };
 		F1B360432B0976CB0099CC8E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B360422B0976CB0099CC8E /* Game.swift */; };
+		F1B360482B0A817E0099CC8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B360472B0A817E0099CC8E /* LoginViewController.swift */; };
+		F1B3604A2B0A82590099CC8E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B360492B0A82590099CC8E /* Profile.swift */; };
+		F1B3604C2B0AE83B0099CC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B3604B2B0AE83B0099CC8E /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,14 +40,17 @@
 		174B626C2F21BB18F0639DDB /* Pods-Sportify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sportify.release.xcconfig"; path = "Target Support Files/Pods-Sportify/Pods-Sportify.release.xcconfig"; sourceTree = "<group>"; };
 		959DA5ADEF8DC396A2FD9B15 /* Pods-Sportify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sportify.debug.xcconfig"; path = "Target Support Files/Pods-Sportify/Pods-Sportify.debug.xcconfig"; sourceTree = "<group>"; };
 		97C51ACE9DAF87C888D17AE0 /* Pods_Sportify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sportify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1B360062B09658B0099CC8E /* Sportify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Sportify.app; path = "/Users/metoajagu/Downloads/CU APPDEV/Sportify/build/Debug/Sportify.app"; sourceTree = "<absolute>"; };
 		F1B3600B2B09658B0099CC8E /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
-		F1B360172B0965910099CC8E /* SportifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SportifyTests.xctest; path = "/Users/metoajagu/Downloads/CU APPDEV/Sportify/build/Debug/SportifyTests.xctest"; sourceTree = "<absolute>"; };
-		F1B360212B0965910099CC8E /* SportifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SportifyUITests.xctest; path = "/Users/metoajagu/Downloads/CU APPDEV/Sportify/build/Debug/SportifyUITests.xctest"; sourceTree = "<absolute>"; };
 		F1B360342B096CE00099CC8E /* GamesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCollectionViewCell.swift; sourceTree = "<group>"; };
 		F1B360382B096EB00099CC8E /* DetailedGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedGameController.swift; sourceTree = "<group>"; };
 		F1B3603A2B096ECB0099CC8E /* ProfilePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageController.swift; sourceTree = "<group>"; };
 		F1B360422B0976CB0099CC8E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		F1B360442B0A80030099CC8E /* Sportify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sportify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1B360452B0A80030099CC8E /* SportifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1B360462B0A80030099CC8E /* SportifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1B360472B0A817E0099CC8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F1B360492B0A82590099CC8E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		F1B3604B2B0AE83B0099CC8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,10 @@
 				F1B360362B096DC20099CC8E /* Controllers */,
 				352A0D1ECCA3DC6D6B039003 /* Pods */,
 				780E5A2FF5F602CBA6C5F3C6 /* Frameworks */,
+				F1B360442B0A80030099CC8E /* Sportify.app */,
+				F1B360452B0A80030099CC8E /* SportifyTests.xctest */,
+				F1B360462B0A80030099CC8E /* SportifyUITests.xctest */,
+				F1B3604B2B0AE83B0099CC8E /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +118,7 @@
 				F1B3600B2B09658B0099CC8E /* ScheduleViewController.swift */,
 				F1B360382B096EB00099CC8E /* DetailedGameController.swift */,
 				F1B3603A2B096ECB0099CC8E /* ProfilePageController.swift */,
+				F1B360472B0A817E0099CC8E /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -124,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				F1B360422B0976CB0099CC8E /* Game.swift */,
+				F1B360492B0A82590099CC8E /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -150,7 +162,7 @@
 				F1B3603F2B0976530099CC8E /* Alamofire */,
 			);
 			productName = Sportify;
-			productReference = F1B360062B09658B0099CC8E /* Sportify.app */;
+			productReference = F1B360442B0A80030099CC8E /* Sportify.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F1B360162B0965910099CC8E /* SportifyTests */ = {
@@ -168,7 +180,7 @@
 			);
 			name = SportifyTests;
 			productName = SportifyTests;
-			productReference = F1B360172B0965910099CC8E /* SportifyTests.xctest */;
+			productReference = F1B360452B0A80030099CC8E /* SportifyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F1B360202B0965910099CC8E /* SportifyUITests */ = {
@@ -186,7 +198,7 @@
 			);
 			name = SportifyUITests;
 			productName = SportifyUITests;
-			productReference = F1B360212B0965910099CC8E /* SportifyUITests.xctest */;
+			productReference = F1B360462B0A80030099CC8E /* SportifyUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -242,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1B3604C2B0AE83B0099CC8E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,8 +321,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1B360482B0A817E0099CC8E /* LoginViewController.swift in Sources */,
 				F1B3603B2B096ECB0099CC8E /* ProfilePageController.swift in Sources */,
 				F1B360432B0976CB0099CC8E /* Game.swift in Sources */,
+				F1B3604A2B0A82590099CC8E /* Profile.swift in Sources */,
 				F1B3600C2B09658B0099CC8E /* ScheduleViewController.swift in Sources */,
 				F1B360352B096CE00099CC8E /* GamesCollectionViewCell.swift in Sources */,
 				F1B360392B096EB00099CC8E /* DetailedGameController.swift in Sources */,

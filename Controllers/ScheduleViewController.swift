@@ -7,18 +7,105 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ScheduleView: View {
+    
+   @State private var score: Float = 0.0
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            VStack {
+                HStack {
+                    Image("")
+                    Text("Cornell University")
+                }
+                
+                HStack {
+                    NavigationLink {
+                        DetailedGameController()
+                    } label: {
+                        viewSoccerButton()
+                    }
+                    NavigationLink {
+                        DetailedGameController()
+                    } label: {
+                        viewBasketballButton()
+                    }
+                    NavigationLink {
+                        DetailedGameController()
+                    } label: {
+                        viewFootballButton()
+                    }
+                    NavigationLink {
+                        DetailedGameController()
+                    } label: {
+                        viewHockeyButton()
+                    }
+                }
+                
+                Text("Current Events")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                
+                List(games, id: \.self) { game in
+                    gameInfo(game)
+                }
+            
+            }
+        
         }
-        .padding()
+    }
+    
+    private func gameInfo(_
+            game: Game) -> some View {
+        
+        VStack(){
+            Image(game.sportLogo)
+            Text(game.sportName)
+                .font(.headline)
+                .fontWeight(.bold)
+            Text(game.sportTeam)
+                .font(.subheadline)
+                .fontWeight(.medium)
+        }
+    }
+    
+    private func viewSoccerButton() -> some View {
+        Text("Soccer")
+            .font(.title)
+            .foregroundColor(.black)
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+    }
+    
+    private func viewBasketballButton() -> some View {
+        Text("Basketball")
+            .font(.title)
+            .foregroundColor(.black)
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+    }
+    
+    private func viewFootballButton() -> some View {
+        Text("Football")
+            .font(.title)
+            .foregroundColor(.black)
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+    }
+    
+    private func viewHockeyButton() -> some View {
+        Text("Hockey")
+            .font(.title)
+            .foregroundColor(.black)
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
     }
 }
 
 #Preview {
-    ContentView()
+    ScheduleView()
 }

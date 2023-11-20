@@ -7,3 +7,9 @@
 
 import Foundation
 import SwiftUI
+
+struct DetailedGameController: View {
+    typealias Body = <#type#>
+    
+//    Code
+}
