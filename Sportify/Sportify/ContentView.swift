@@ -12,7 +12,7 @@ import SDWebImage
 struct ContentView: View {
     
     @State private var score: Float = 0.0
-    @State private var game: [Game] = [Game(id: 2, sportLogo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Cornell_Big_Red_logo.svg/640px-Cornell_Big_Red_logo.svg.png", sport: "Basketball", gender: "Men's", location: "Bartels", dateTime: Date(), teams: ["Cornell", "Harvard"], num_tickets: 200, users_attending: [])]
+    @State private var game: [Game] = [Game(id: 2, sport: "Basketball", gender: "Men's", location: "Bartels", dateTime: Date(), teams: ["Cornell", "Harvard"], num_tickets: 200, users_attending: [])]
     
     var body: some View {
         NavigationStack{
