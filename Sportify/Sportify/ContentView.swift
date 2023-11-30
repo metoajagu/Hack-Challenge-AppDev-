@@ -11,7 +11,8 @@ import SDWebImage
 
 struct ContentView: View {
     
-   @State private var score: Float = 0.0
+    @State private var score: Float = 0.0
+    @State private var game: [Game] = [Game(id: 2, sportLogo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Cornell_Big_Red_logo.svg/640px-Cornell_Big_Red_logo.svg.png", sport: "Basketball", gender: "Men's", location: "Bartels", date_time: Date(), teams: ["Cornell", "Harvard"], num_tickets: 200, users_attending: [])]
     
     var body: some View {
         NavigationStack{
@@ -24,6 +25,7 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 50, alignment: .leading)
+                    
                     
                     Text("CORNELL")
                         .font(.title)
@@ -56,36 +58,62 @@ struct ContentView: View {
                     }
                 }
                 
-                VStack(alignment: .leading){
+                VStack(alignment: .leading) {
                     Text("Current Events")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding()
+                        .font(.largeTitle)
+                        .foregroundColor(.red)
+                        .fontWeight(.bold)
+                        .padding()
                     
                     List(games, id: \.self) { game in
                         gameInfo(game)
                     }
                 }
-            
+                
+                VStack(alignment: .leading) {
+                    Text("Upcoming Events")
+                        .font(.largeTitle)
+                        .foregroundColor(.red)
+                        .fontWeight(.bold)
+                        .padding()
+                    
+                    List(games, id: \.self) { game in
+                        gameInfo(game)
+                    }
+                }
             }
-        
+            
         }
     }
     
     private func gameInfo(_
-            game: Game) -> some View {
+                          game: Game) -> some View {
         
-        VStack(){
-            Image(game.sportLogo)
-            Text(game.sportName)
+        return VStack(alignment: .leading) {
+            Text(game.sport)
                 .font(.headline)
                 .fontWeight(.bold)
-            Text(game.sportTeam)
+            Text(game.teams[0])
+                .font(.subheadline)
+                .fontWeight(.medium)
+            Text(game.teams[1])
+                .font(.subheadline)
+                .fontWeight(.medium)
+            Text(game.location)
                 .font(.subheadline)
                 .fontWeight(.medium)
         }
     }
     
+    //    private func currentEvents(_
+    //    game: Game) -> some View {
+    //
+    //        
+    //    }
+    
+    //    private func upcomingEvents(_game: Game) - some View {
+    //
+    //    }
     private func viewSoccerButton() -> some View {
         Text("Soccer")
             .font(.subheadline)

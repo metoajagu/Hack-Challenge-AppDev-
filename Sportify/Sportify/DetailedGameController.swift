@@ -14,3 +14,6 @@ struct DetailedGameController: View {
     }
 }
 
+#Preview {
+    DetailedGameController()
+}

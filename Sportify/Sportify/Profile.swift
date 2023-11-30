@@ -8,5 +8,8 @@
 import SwiftUI
 
 struct Profile: Hashable {
+    let id: Int
     let name: String
+    let age: String
+    let netid: String
 }
