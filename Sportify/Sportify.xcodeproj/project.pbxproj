@@ -19,6 +19,7 @@
 		F1DD6F652B182B1500F95BB0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F642B182B1500F95BB0 /* Game.swift */; };
 		F1DD6F672B182B3500F95BB0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F662B182B3500F95BB0 /* Profile.swift */; };
 		F1DD6F692B182B7300F95BB0 /* DetailedGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */; };
+		F1DD6F6D2B1932EE00F95BB0 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		F1DD6F642B182B1500F95BB0 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F1DD6F662B182B3500F95BB0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedGameController.swift; sourceTree = "<group>"; };
+		F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				F16792712B1809E400A1B6B8 /* Sportify */,
 				F16792822B1809EB00A1B6B8 /* SportifyTests */,
 				F167928C2B1809EB00A1B6B8 /* SportifyUITests */,
+				F16792762B1809EA00A1B6B8 /* Assets.xcassets */,
 				F16792702B1809E400A1B6B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,11 +109,11 @@
 			children = (
 				F16792722B1809E400A1B6B8 /* SportifyApp.swift */,
 				F16792742B1809E400A1B6B8 /* ContentView.swift */,
-				F16792762B1809EA00A1B6B8 /* Assets.xcassets */,
-				F16792782B1809EA00A1B6B8 /* Preview Content */,
 				F1DD6F642B182B1500F95BB0 /* Game.swift */,
 				F1DD6F662B182B3500F95BB0 /* Profile.swift */,
 				F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */,
+				F16792782B1809EA00A1B6B8 /* Preview Content */,
+				F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */,
 			);
 			path = Sportify;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F16792752B1809E400A1B6B8 /* ContentView.swift in Sources */,
+				F1DD6F6D2B1932EE00F95BB0 /* Ticket.swift in Sources */,
 				F1DD6F692B182B7300F95BB0 /* DetailedGameController.swift in Sources */,
 				F1DD6F652B182B1500F95BB0 /* Game.swift in Sources */,
 				F1DD6F672B182B3500F95BB0 /* Profile.swift in Sources */,
