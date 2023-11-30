@@ -23,6 +23,7 @@ struct ContentView: View {
                     WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"))
                         .resizable()
                         .scaledToFit()
+                        .frame(width: 50, height: 50, alignment: .leading)
                     
                     Text("CORNELL")
                         .font(.title)
