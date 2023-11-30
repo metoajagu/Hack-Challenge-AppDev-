@@ -12,10 +12,14 @@ import SDWebImage
 struct ContentView: View {
     
     @State private var score: Float = 0.0
-    @State private var game: [Game] = [Game(id: 2, sport: "Basketball", gender: "Men's", location: "Bartels", dateTime: Date(), teams: ["Cornell", "Harvard"], num_tickets: 200, users_attending: [])]
+    @State private var events: [Game] = games
+    let index: Int = 0
     
     var body: some View {
         NavigationStack{
+//            for index in events.count {
+//                events[index].
+//            }
             VStack {
                 HStack {
                     Text("Sportify")
@@ -65,8 +69,18 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .padding()
                     
-                    List(games, id: \.self) { game in
-                        gameInfo(game)
+                    VStack {
+                        HStack{
+                            WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Harvard_Crimson_logo.svg/1737px-Harvard_Crimson_logo.svg.png"))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50, alignment: .leading)
+                            
+                        }
+                        WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50, alignment: .leading)
                     }
                 }
                 
@@ -93,12 +107,6 @@ struct ContentView: View {
             Text(game.sport)
                 .font(.headline)
                 .fontWeight(.bold)
-            Text(game.teams[0])
-                .font(.subheadline)
-                .fontWeight(.medium)
-            Text(game.teams[1])
-                .font(.subheadline)
-                .fontWeight(.medium)
             Text(game.location)
                 .font(.subheadline)
                 .fontWeight(.medium)

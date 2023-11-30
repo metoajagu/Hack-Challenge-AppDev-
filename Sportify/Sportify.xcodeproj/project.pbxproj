@@ -20,6 +20,7 @@
 		F1DD6F672B182B3500F95BB0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F662B182B3500F95BB0 /* Profile.swift */; };
 		F1DD6F692B182B7300F95BB0 /* DetailedGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */; };
 		F1DD6F6D2B1932EE00F95BB0 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */; };
+		F1DD6F6F2B1952C500F95BB0 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F6E2B1952C500F95BB0 /* School.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		F1DD6F662B182B3500F95BB0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedGameController.swift; sourceTree = "<group>"; };
 		F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		F1DD6F6E2B1952C500F95BB0 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */,
 				F16792782B1809EA00A1B6B8 /* Preview Content */,
 				F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */,
+				F1DD6F6E2B1952C500F95BB0 /* School.swift */,
 			);
 			path = Sportify;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1DD6F6F2B1952C500F95BB0 /* School.swift in Sources */,
 				F16792752B1809E400A1B6B8 /* ContentView.swift in Sources */,
 				F1DD6F6D2B1932EE00F95BB0 /* Ticket.swift in Sources */,
 				F1DD6F692B182B7300F95BB0 /* DetailedGameController.swift in Sources */,
