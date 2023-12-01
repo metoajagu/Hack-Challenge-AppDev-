@@ -16,10 +16,7 @@ struct ContentView: View {
     let index: Int = 0
     
     var body: some View {
-        NavigationStack{
-//            for index in events.count {
-//                events[index].
-//            }
+        NavigationStack {
             VStack {
                 HStack {
                     Text("Sportify")
@@ -68,20 +65,22 @@ struct ContentView: View {
                         .foregroundColor(.red)
                         .fontWeight(.bold)
                         .padding()
-                    
-                    VStack {
-                        HStack{
-                            WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Harvard_Crimson_logo.svg/1737px-Harvard_Crimson_logo.svg.png"))
+                    List(events) { event in
+                        VStack {
+                            HStack {
+                                WebImage(url: URL(string: event.awayLogo))
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 50, height: 50, alignment: .leading)
-                            
+                                Text(event.gender)
+                                Text("\(event.sport) vs")
+                                Text(event.away)
+                                
+                            }
                         }
-                        WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"))
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50, alignment: .leading)
                     }
+                    
+                    
                 }
                 
                 VStack(alignment: .leading) {
@@ -90,9 +89,21 @@ struct ContentView: View {
                         .foregroundColor(.red)
                         .fontWeight(.bold)
                         .padding()
+                
                     
-                    List(games, id: \.self) { game in
-                        gameInfo(game)
+                    List(events) { event in
+                        VStack {
+                            HStack {
+                                WebImage(url: URL(string: event.awayLogo))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50, alignment: .leading)
+                                Text(event.gender)
+                                Text("\(event.sport) vs")
+                                Text(event.away)
+                                
+                            }
+                        }
                     }
                 }
             }

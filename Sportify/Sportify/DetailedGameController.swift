@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct DetailedGameController: View {
     var body: some View {
         Text("Sportify")

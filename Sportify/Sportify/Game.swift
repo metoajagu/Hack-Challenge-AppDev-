@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct Game: Hashable, Identifiable {
-    let id: Int
+    let id = UUID()
     let sport: String
+    let image: String
     let gender: String
     let location: String
     let dateTime: Date
-    let teams: [School]
+    let awayLogo: String
+    let away: String
     let num_tickets: Int
     let users_attending: [Profile]
 }
 
-var games: [Game] = [Game(id: 1, sport: "Basketball", gender: "Men's", location: "Bartels", dateTime: Date(), teams: [School(id: 4, name: "Cornell", schoolLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"), School(id: 5, name: "Harvard", schoolLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Harvard_Crimson_logo.svg/1737px-Harvard_Crimson_logo.svg.png")], num_tickets: 200, users_attending: []),
-    Game(id: 2, sport: "Soccer", gender: "Men's", location: "Bartels", dateTime: Date(), teams: [School(id: 6, name: "Cornell", schoolLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"), School(id: 7, name: "Princeton", schoolLogo: "")], num_tickets: 100, users_attending: []),
-    Game(id: 2, sport: "Hockey", gender: "Men's", location: "Bartels", dateTime: Date(), teams: [School(id: 8, name: "Cornell", schoolLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"), School(id: 9, name: "Boston University", schoolLogo: "")], num_tickets: 100, users_attending: [])]
+var games: [Game] = [Game(sport: "Basketball", image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png",gender: "Men's", location: "Bartels", dateTime: Date(), awayLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Harvard_Crimson_logo_2020.svg/640px-Harvard_Crimson_logo_2020.svg.png", away: "Harvard", num_tickets: 200, users_attending: []),
+                     Game(sport: "Hockey", image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png", gender: "Men's", location: "Bartels", dateTime: Date(), awayLogo:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Boston_University_seal.svg/1200px-Boston_University_seal.svg.png", away:"BU", num_tickets: 100, users_attending: [])]
 
