@@ -171,7 +171,20 @@ struct ContentView: View {
             }
         }
     }
-
+    
+    private func gameInfo(_
+                          game: Game) -> some View {
+        
+        return VStack(alignment: .leading) {
+            Text(game.sport)
+                .font(.headline)
+                .fontWeight(.bold)
+            Text(game.location)
+                .font(.subheadline)
+                .fontWeight(.medium)
+        }
+    }
+    
     private func viewSoccerButton() -> some View {
         Text("Soccer")
             .font(.subheadline)
