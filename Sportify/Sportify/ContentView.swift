@@ -18,9 +18,6 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-//                HStack {
-//                    Text("Sportify")
-//                }
                 HStack{
                     WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"))
                         .resizable()
@@ -124,15 +121,6 @@ struct ContentView: View {
         }
     }
     
-    //    private func currentEvents(_
-    //    game: Game) -> some View {
-    //
-    //        
-    //    }
-    
-    //    private func upcomingEvents(_game: Game) - some View {
-    //
-    //    }
     private func viewSoccerButton() -> some View {
         Text("Soccer")
             .font(.subheadline)
