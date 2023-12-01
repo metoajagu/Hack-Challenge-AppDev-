@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 import SDWebImageSwiftUI
 import SDWebImage
 
@@ -17,160 +18,209 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-//                HStack {
-//                    Text("Sportify")
-//                }
-                HStack{
-                    WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"))
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50, alignment: .leading)
+            ScrollView(.vertical){
+                VStack {
+                    HStack{
+                        WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50, alignment: .leading)
+                        
+                        Text("CORNELL")
+                            .font(.title)
+                            //.fontWidth(.expanded)
+                            .foregroundColor(.black)
+                            .fontWeight(.bold)
+                    }
                     
-                    
-                    Text("CORNELL")
-                        .font(.title)
-                        .fontWidth(.expanded)
-                        .foregroundColor(.red)
-                        .fontWeight(.bold)
-                    
-                }
-                
-                HStack {
-                    NavigationLink {
-                        DetailedGameController(sportType:"Soccer")
-                    } label: {
-                        viewSoccerButton()
-                    }
-                    NavigationLink {
-                        DetailedGameController(sportType:"Basketball")
-                    } label: {
-                        viewBasketballButton()
-                    }
-                    NavigationLink {
-                        DetailedGameController(sportType:"Football")
-                    } label: {
-                        viewFootballButton()
-                    }
-                    NavigationLink {
-                        DetailedGameController(sportType:"Hockey")
-                    } label: {
-                        viewHockeyButton()
-                    }
-                }
-                
-                VStack(alignment: .leading) {
-                    Text("Current Events")
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
-                        .fontWeight(.bold)
-                        .padding()
-                    List(events) { event in
-                        VStack {
-                            HStack {
-                                WebImage(url: URL(string: event.awayLogo))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 50, height: 50, alignment: .leading)
-                                Text(event.gender)
-                                Text("\(event.sport) vs")
-                                Text(event.away)
-                                
+                    ScrollView(.horizontal) {
+                        HStack {
+                            NavigationLink {
+                                DetailedGameController(sportType:"Soccer")
+                            } label: {
+                                viewSoccerButton()
+                            }
+                            NavigationLink {
+                                DetailedGameController(sportType:"Basketball")
+                            } label: {
+                                viewBasketballButton()
+                            }
+                            NavigationLink {
+                                DetailedGameController(sportType:"Football")
+                            } label: {
+                                viewFootballButton()
+                            }
+                            NavigationLink {
+                                DetailedGameController(sportType:"Hockey")
+                            } label: {
+                                viewHockeyButton()
+                            }
+                            NavigationLink {
+                                DetailedGameController(sportType:"Tennis")
+                            } label: {
+                                viewTennisButton()
                             }
                         }
                     }
                     
+                    VStack(alignment: .leading) {
+                        Text("Current Events")
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                            .fontWeight(.bold)
+                            .padding()
+                        
+                        Divider()
+//                            .padding()
+                        
+                        ForEach(games) { game in
+                            NavigationLink (
+                                destination: DetailedGameView(),
+                                label: {
+                                    VStack{
+                                        Spacer()
+                                        HStack {
+                                            Spacer()
+                                            WebImage(url: URL(string: game.awayLogo))
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 50, height: 50)
+                                            Text(game.gender)
+                                            Text("\(game.sport) vs.")
+                                            Text("\(game.away)")
+                                            Image(systemName: "chevron.right")
+                                                .font(.system(size: 20, weight: .bold))
+                                            
+                                            Spacer()
+                                        }
+                                        HStack {
+                                            
+                                            Text("\(game.location) ")
+                                            Text("-")
+                                                .bold()
+                                            //    .multilineTextAlignment(.leading)
+                                            Text("7 - 0")
+                                            //   .font(.headl)
+                                            
+                                        }
+                                        Spacer()
+                                    }
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .fill(Color.cellBackground)
+                                            .stroke(Color.black, lineWidth: 2)
+                                    }
+                                    .padding()
+                                }
+                            ).buttonStyle(PlainButtonStyle())
+                        }
+                        
+                        
+                    }
                     
-                }
-                
-                VStack(alignment: .leading) {
-                    Text("Upcoming Events")
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
-                        .fontWeight(.bold)
-                        .padding()
-                
-                    
-                    List(events) { event in
-                        VStack {
-                            HStack {
-                                WebImage(url: URL(string: event.awayLogo))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 50, height: 50, alignment: .leading)
-                                Text(event.gender)
-                                Text("\(event.sport) vs")
-                                Text(event.away)
-                                
-                            }
+                    VStack(alignment: .leading) {
+                        Text("Upcoming Events")
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                            .fontWeight(.bold)
+                            .padding()
+                        
+                        Divider()
+//                            .padding()
+                        
+                        ForEach(games) { game in
+                            NavigationLink (
+                                destination: DetailedGameView(),
+                                label: {
+                                    VStack{
+                                        Spacer()
+
+                                        HStack {
+                                            Spacer()
+                                            WebImage(url: URL(string: game.awayLogo))
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 50, height: 50)
+                                            Text(game.gender)
+                                            Text("\(game.sport) vs.")
+                                            Text("\(game.away)")
+                                            Image(systemName: "chevron.right")
+                                                .font(.system(size: 20, weight: .bold))
+                        
+                                            Spacer()
+                                        }
+                                        HStack {
+                                            
+                                            Text("\(game.location) -")
+                                                .multilineTextAlignment(.leading)
+                                            Text("\(game.dateTime.formatted(date: .long, time: .shortened))")
+                                        }
+                                        Spacer()
+
+                                    }
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .fill(Color.cellBackground)
+                                            .stroke(Color.black, lineWidth: 2)
+                                    }
+                                    .padding()
+                                }
+                            ).buttonStyle(PlainButtonStyle())
                         }
                     }
                 }
             }
-            
         }
     }
-    
-    private func gameInfo(_
-                          game: Game) -> some View {
-        
-        return VStack(alignment: .leading) {
-            Text(game.sport)
-                .font(.headline)
-                .fontWeight(.bold)
-            Text(game.location)
-                .font(.subheadline)
-                .fontWeight(.medium)
-        }
-    }
-    
-    //    private func currentEvents(_
-    //    game: Game) -> some View {
-    //
-    //        
-    //    }
-    
-    //    private func upcomingEvents(_game: Game) - some View {
-    //
-    //    }
+
     private func viewSoccerButton() -> some View {
         Text("Soccer")
             .font(.subheadline)
             .fontWeight(.bold)
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .background(.red)
+            .background(.gray)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+    }
+    
+    private func viewTennisButton() -> some View {
+        Text("Tennis")
+            .font(.subheadline)
+            .fontWeight(.bold)
+            .foregroundColor(.white)
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+            .background(.gray)
             .clipShape(RoundedRectangle(cornerRadius: 15))
     }
     
     private func viewBasketballButton() -> some View {
         Text("Basketball")
             .font(.subheadline)
+            .fontWeight(.bold)
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .background(.red)
+            .background(.gray)
             .clipShape(RoundedRectangle(cornerRadius: 15))
-            .fontWeight(.medium)
     }
     
     private func viewFootballButton() -> some View {
         Text("Football")
             .font(.subheadline)
+            .fontWeight(.bold)
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .background(.red)
+            .background(.gray)
             .clipShape(RoundedRectangle(cornerRadius: 15))
-            .fontWeight(.bold)
     }
     
     private func viewHockeyButton() -> some View {
         Text("Hockey")
             .font(.subheadline)
+            .fontWeight(.bold)
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .background(.red)
+            .background(.gray)
             .clipShape(RoundedRectangle(cornerRadius: 15))
-            .fontWeight(.bold)
     }
 }
 
