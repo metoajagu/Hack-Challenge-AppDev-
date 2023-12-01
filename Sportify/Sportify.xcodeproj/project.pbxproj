@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E7613E32B19EA3400E93192 /* DetailedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613E22B19EA3400E93192 /* DetailedGameView.swift */; };
+		2E7613E52B19EAB500E93192 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613E42B19EAB500E93192 /* Colors.swift */; };
 		F16792732B1809E400A1B6B8 /* SportifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16792722B1809E400A1B6B8 /* SportifyApp.swift */; };
 		F16792752B1809E400A1B6B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16792742B1809E400A1B6B8 /* ContentView.swift */; };
 		F16792772B1809EA00A1B6B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16792762B1809EA00A1B6B8 /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E7613E22B19EA3400E93192 /* DetailedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedGameView.swift; sourceTree = "<group>"; };
+		2E7613E42B19EAB500E93192 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F167926F2B1809E400A1B6B8 /* Sportify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sportify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16792722B1809E400A1B6B8 /* SportifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportifyApp.swift; sourceTree = "<group>"; };
 		F16792742B1809E400A1B6B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				F1DD6F642B182B1500F95BB0 /* Game.swift */,
 				F1DD6F662B182B3500F95BB0 /* Profile.swift */,
 				F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */,
+				2E7613E22B19EA3400E93192 /* DetailedGameView.swift */,
+				2E7613E42B19EAB500E93192 /* Colors.swift */,
 				F16792782B1809EA00A1B6B8 /* Preview Content */,
 				F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */,
 				F1DD6F702B197B6A00F95BB0 /* NetworkingManager.swift */,
@@ -286,7 +292,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F16792752B1809E400A1B6B8 /* ContentView.swift in Sources */,
+				2E7613E52B19EAB500E93192 /* Colors.swift in Sources */,
 				F1DD6F6D2B1932EE00F95BB0 /* Ticket.swift in Sources */,
+				2E7613E32B19EA3400E93192 /* DetailedGameView.swift in Sources */,
 				F1DD6F712B197B6B00F95BB0 /* NetworkingManager.swift in Sources */,
 				F1DD6F692B182B7300F95BB0 /* DetailedGameController.swift in Sources */,
 				F1DD6F652B182B1500F95BB0 /* Game.swift in Sources */,
