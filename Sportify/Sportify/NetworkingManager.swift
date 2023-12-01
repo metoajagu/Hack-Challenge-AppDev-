@@ -14,9 +14,9 @@ struct NetworkingManager {
     
     private init() {    }
     
-    func fetchRoster(completion: @escaping ([Game]) -> Void) {
+    func fetchRoster(sport: String, completion: @escaping ([Game]) -> Void) {
 //        Make Endpoint URL
-        let endpoint = ""
+        let endpoint = "\(sport)"
 //        Create Parameters
 //        let parameters: Parameters = [
 //            "sport": event.sport,
