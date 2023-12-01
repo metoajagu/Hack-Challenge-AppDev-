@@ -15,7 +15,6 @@ struct DetailedGameView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     let game: Game
     
-    
     @State private var minRemaining: Int
     @State private var secRemaining = 59
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -86,57 +85,47 @@ struct DetailedGameView: View {
             Text("Lineup")
                 .font(.title)
             Divider()
-            VStack {
-                
-                //
-                //            ForEach(games) { game in
-                //                NavigationLink (
-                //                    //make a new detailed player view
-                //                    destination: DetailedPlayerView(),
-                //                    label: {
-                //                        VStack{
-                //                            Spacer()
-                //
-                //                            HStack {
-                //                                Spacer()
-                //                                //For each loop for every player on the home roster, then the away roster
-                //
-                //                                WebImage(url: URL(string: ))
-                //                                 .resizable()
-                //                                 .scaledToFit()
-                //                                 .frame(width: 50, height: 50)
-                //                                }
-                //
-                //                                    .resizable()
-                //                                    .scaledToFit()
-                //                                    .frame(width: 50, height: 50)
-                //                                Text(game.gender)
-                //                                Text("\(game.sport) vs.")
-                //                                Text("\(game.away)")
-                //                                Image(systemName: "chevron.right")
-                //                                    .font(.system(size: 20, weight: .bold))
-                //
-                //                                Spacer()
-                //                            }
-                //                            HStack {
-                //
-                //                                Text("\(game.location) -")
-                //                                    .multilineTextAlignment(.leading)
-                //                                Text("\(game.dateTime.formatted(date: .long, time: .shortened))")
-                //                            }
-                //                            Spacer()
-                //
-                //                        }
-                //                        .background {
-                //                            RoundedRectangle(cornerRadius: 4)
-                //                                .fill(Color.cellBackground)
-                //                                .stroke(Color.black, lineWidth: 2)
-                //                        }
-                //                        .padding()
-                //                    }
-                //                ).buttonStyle(PlainButtonStyle())
-                //            }
-                //        }
+            
+            HStack{
+                ForEach(games) { game in
+                    VStack{
+                        ForEach(game.homeRoster) { player in
+                            HStack{
+                                WebImage(url: URL(string: player.picture))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                VStack{
+                                    Text("\(player.name)")
+                                        .font(.subheadline)
+                                    Text("Age \(player.age)")
+                                        .font(.subheadline)
+                                }
+                            }
+                        }
+                    }
+                }
+                    
+                    VStack {
+                        ForEach(games) { game in
+                            ForEach(game.awayRoster) { player in
+                                HStack{
+                                    WebImage(url: URL(string: player.picture))
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50, height: 50)
+                                    VStack{
+                                        Text("\(player.name)")
+                                            .font(.subheadline)
+                                        Text("Age: \(player.age)")
+                                            .font(.subheadline)
+                                    }
+                                }
+                            }
+                        }
+                    }
+            }
+
                 Spacer()
                 Spacer()
                 Spacer()
@@ -156,7 +145,7 @@ struct DetailedGameView: View {
             }
         }
     }
-}
+
 
 private func getMinutesDifferenceFromTwoDates(start: Date, end: Date) -> Int
    {

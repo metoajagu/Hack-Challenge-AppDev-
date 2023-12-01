@@ -12,9 +12,9 @@ import SDWebImage
 
 struct ContentView: View {
     
-    @State private var score: Float = 0.0
-    @State private var events: [Game] = games
-    let index: Int = 0
+   //@State private var score: Float = 0.0
+   //@State private var events: [Game] = games
+   //let index: Int = 0
     
     var body: some View {
         NavigationStack {
