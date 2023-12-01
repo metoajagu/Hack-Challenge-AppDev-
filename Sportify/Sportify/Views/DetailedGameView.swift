@@ -19,113 +19,118 @@ struct DetailedGameView: View {
     @State private var secRemaining = 59
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    //    @StateObject private var vm = TimerView()
-    //    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    //    private let width: Double = 250
-    
     init(game: Game) {
         self.game = game
         _minRemaining = State(initialValue: getMinutesDifferenceFromTwoDates(start: Date.now, end: game.dateTime))
     }
     
     var body: some View {
-        //NavigationStack{
         VStack{
-            HStack{
-                
-                WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 90, height: 90, alignment: .leading)
-                
-                
-                Text("VS.")
+            ScrollView(.vertical){
+                HStack{
+                    
+                    WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 90, height: 90, alignment: .leading)
+                    
+                    
+                    Text("VS.")
+                        .font(.title)
+                    
+                    WebImage(url: URL(string: game.awayLogo))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 90, height: 90, alignment: .leading)
+                    
+                        .navigationBarBackButtonHidden(true)
+                        .toolbar(content: {
+                            ToolbarItem (placement: .bottomBar)  {
+                                
+                                Button(action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }, label: {
+                                    Image(systemName: "house")
+                                        .foregroundColor(.black)
+                                    Text("home")
+                                        .foregroundColor(.black)
+                                })
+                            }
+                        })
+                    
+                }
+                Text("\(game.gender) \(game.sport)")
                     .font(.title)
                 
-                WebImage(url: URL(string: game.awayLogo))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 90, height: 90, alignment: .leading)
+                //Location and date
+                Spacer()
                 
-                    .navigationBarBackButtonHidden(true)
-                    .toolbar(content: {
-                        ToolbarItem (placement: .bottomBar)  {
-                            
-                            Button(action: {
-                                presentationMode.wrappedValue.dismiss()
-                            }, label: {
-                                Image(systemName: "house")
-                                    .foregroundColor(.black)
-                                Text("home")
-                                    .foregroundColor(.black)
-                            })
-                        }
-                    })
-                // hstack
-                
-            }
-            Text("\(game.gender) \(game.sport)")
-                .font(.title)
-            
-            //Location and date
-            Spacer()
-            
-            HStack{
-                Text("Time Left: \(minRemaining): \(secRemaining)")
-                    .font(.title2)
+                HStack{
+                    Text("Time Left: \(minRemaining): \(secRemaining)")
+                        .font(.title2)
+                    Divider()
+                        .frame(height: 40)
+                    Text("Location: \(game.location)")
+                        .font(.title2)
+                }
+                Text("Stats")
+                    .font(.title)
                 Divider()
-                    .frame(height: 40)
-                Text("Location: \(game.location)")
-                    .font(.title2)
-            }
-            Text("Stats")
-                .font(.title)
-            Divider()
-            
-            Text("Lineup")
-                .font(.title)
-            Divider()
-            
-            HStack{
-                ForEach(games) { game in
-                    VStack{
-                        ForEach(game.homeRoster) { player in
-                            HStack{
-                                WebImage(url: URL(string: player.picture))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 50, height: 50)
-                                VStack{
-                                    Text("\(player.name)")
-                                        .font(.subheadline)
-                                    Text("Age \(player.age)")
-                                        .font(.subheadline)
-                                }
+                
+                Text("Lineup")
+                    .font(.title)
+                Divider()
+                
+                HStack{
+                    ForEach(games) { game in
+                        VStack{
+                            ForEach(game.homeRoster) { player in
+                                NavigationLink (
+                                    destination:DetailedPlayerView(player: player),
+                                    label: {
+                                        HStack{
+                                            WebImage(url: URL(string: player.picture))
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 50, height: 50)
+                                            VStack{
+                                                Text("\(player.name)")
+                                                    .font(.subheadline)
+                                                Text("Age: \(player.age)")
+                                                    .font(.subheadline)
+                                            }
+                                        }
+                                    }).buttonStyle(PlainButtonStyle())
+
+                                Divider()
                             }
                         }
                     }
-                }
                     
                     VStack {
                         ForEach(games) { game in
                             ForEach(game.awayRoster) { player in
-                                HStack{
-                                    WebImage(url: URL(string: player.picture))
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 50, height: 50)
-                                    VStack{
-                                        Text("\(player.name)")
-                                            .font(.subheadline)
-                                        Text("Age: \(player.age)")
-                                            .font(.subheadline)
+                                NavigationLink (destination:DetailedPlayerView(player: player),
+                                                label: {
+                                    HStack{
+                                        WebImage(url: URL(string: player.picture))
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 50, height: 50)
+                                        VStack{
+                                            Text("\(player.name)")
+                                                .font(.subheadline)
+                                            Text("Age: \(player.age)")
+                                                .font(.subheadline)
+                                        }
                                     }
-                                }
+                                }).buttonStyle(PlainButtonStyle())
+                                Divider()
                             }
                         }
                     }
-            }
-
+                }
+                
                 Spacer()
                 Spacer()
                 Spacer()
@@ -145,6 +150,7 @@ struct DetailedGameView: View {
             }
         }
     }
+}
 
 
 private func getMinutesDifferenceFromTwoDates(start: Date, end: Date) -> Int

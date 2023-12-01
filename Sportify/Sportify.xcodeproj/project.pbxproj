@@ -135,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				F16792712B1809E400A1B6B8 /* Sportify */,
-				F16792782B1809EA00A1B6B8 /* Preview Content */,
 				F16792822B1809EB00A1B6B8 /* SportifyTests */,
 				F167928C2B1809EB00A1B6B8 /* SportifyUITests */,
 				F16792762B1809EA00A1B6B8 /* Assets.xcassets */,
@@ -161,6 +160,7 @@
 				2E7613EE2B1A988200E93192 /* Views */,
 				2E7613EF2B1A98AF00E93192 /* Networking */,
 				F16792722B1809E400A1B6B8 /* SportifyApp.swift */,
+				F16792782B1809EA00A1B6B8 /* Preview Content */,
 			);
 			path = Sportify;
 			sourceTree = "<group>";
