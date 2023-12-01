@@ -12,9 +12,6 @@ struct DetailedGameController: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     let sportType: String
     
-//    var mens: String
-//    var womens: String
-    
     var body: some View {
         
         NavigationStack{
@@ -83,7 +80,7 @@ struct DetailedGameController: View {
                     //Implement filter for genders
                         ForEach(games.filter({$0.sport == sportType})) { game in
                             NavigationLink (
-                                destination: DetailedGameView(),
+                                destination: DetailedGameView(game: game),
                                 label: {
                                     
                                     VStack{
@@ -123,33 +120,7 @@ struct DetailedGameController: View {
                                     .padding()
                                 }
                             ).buttonStyle(PlainButtonStyle())
-                            
                         }
-                        
-                    
-                    
-                    
-                    //                     NavigationLink {
-                    //                    DetailedGameController(sportType:"Hockey")
-                    //                     }
-                    
-                    
-                    /*.navigationTitle("Clickable List")*/
-                    
-                    //                List(games.filter({$0.sport == sportType})) { game in
-                    //                    VStack {
-                    //                        HStack {
-                    //                            WebImage(url: URL(string: game.awayLogo))
-                    //                                .resizable()
-                    //                                .scaledToFit()
-                    //                                .frame(width: 50, height: 50, alignment: .leading)
-                    //                            Text(game.gender)
-                    //                            Text("\(game.sport) vs")
-                    //                            Text(game.away)
-                    //
-                    //                        }
-                    //                    }
-                    //                }
                     
                     Text("Upcoming Events")
                         .frame(width: 300, height: 20, alignment: .leading)

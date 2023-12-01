@@ -20,7 +20,7 @@ struct ContentView: View {
         NavigationStack {
             ScrollView(.vertical){
                 VStack {
-                    HStack{
+                    HStack {
                         WebImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png"))
                             .resizable()
                             .scaledToFit()
@@ -28,13 +28,13 @@ struct ContentView: View {
                         
                         Text("CORNELL")
                             .font(.title)
-                            //.fontWidth(.expanded)
                             .foregroundColor(.black)
                             .fontWeight(.bold)
                     }
                     
                     ScrollView(.horizontal) {
                         HStack {
+                            Spacer()
                             NavigationLink {
                                 DetailedGameController(sportType:"Soccer")
                             } label: {
@@ -60,22 +60,24 @@ struct ContentView: View {
                             } label: {
                                 viewTennisButton()
                             }
+                            Spacer()
                         }
                     }
                     
                     VStack(alignment: .leading) {
-                        Text("Current Events")
-                            .font(.largeTitle)
-                            .foregroundColor(.black)
-                            .fontWeight(.bold)
-                            .padding()
-                        
-                        Divider()
-//                            .padding()
+                        VStack(spacing: 0){
+                            Text("Current Events")
+                                .font(.largeTitle)
+                                .foregroundColor(.black)
+                                .frame(width: 350, height: 50, alignment: .leading)
+                                .fontWeight(.bold)
+                            
+                            Divider()
+                        }
                         
                         ForEach(games) { game in
                             NavigationLink (
-                                destination: DetailedGameView(),
+                                destination: DetailedGameView(game: game),
                                 label: {
                                     VStack{
                                         Spacer()
@@ -98,10 +100,7 @@ struct ContentView: View {
                                             Text("\(game.location) ")
                                             Text("-")
                                                 .bold()
-                                            //    .multilineTextAlignment(.leading)
                                             Text("7 - 0")
-                                            //   .font(.headl)
-                                            
                                         }
                                         Spacer()
                                     }
@@ -115,22 +114,22 @@ struct ContentView: View {
                             ).buttonStyle(PlainButtonStyle())
                         }
                         
-                        
                     }
                     
                     VStack(alignment: .leading) {
-                        Text("Upcoming Events")
-                            .font(.largeTitle)
-                            .foregroundColor(.black)
-                            .fontWeight(.bold)
-                            .padding()
-                        
-                        Divider()
-//                            .padding()
-                        
+                        VStack(spacing: 0){
+                            Text("Upcoming Events")
+                                .font(.largeTitle)
+                                .foregroundColor(.black)
+                                .frame(width: 350, height: 50, alignment: .leading)
+                                .fontWeight(.bold)
+                            
+                            Divider()
+                            
+                        }
                         ForEach(games) { game in
                             NavigationLink (
-                                destination: DetailedGameView(),
+                                destination: DetailedGameView(game: game),
                                 label: {
                                     VStack{
                                         Spacer()
@@ -179,7 +178,7 @@ struct ContentView: View {
             .fontWeight(.bold)
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .background(.gray)
+            .background(Color.sportBackground)
             .clipShape(RoundedRectangle(cornerRadius: 15))
     }
     
@@ -189,7 +188,7 @@ struct ContentView: View {
             .fontWeight(.bold)
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .background(.gray)
+            .background(Color.sportBackground)
             .clipShape(RoundedRectangle(cornerRadius: 15))
     }
     
@@ -199,7 +198,7 @@ struct ContentView: View {
             .fontWeight(.bold)
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .background(.gray)
+            .background(Color.sportBackground)
             .clipShape(RoundedRectangle(cornerRadius: 15))
     }
     
@@ -209,7 +208,7 @@ struct ContentView: View {
             .fontWeight(.bold)
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .background(.gray)
+            .background(Color.sportBackground)
             .clipShape(RoundedRectangle(cornerRadius: 15))
     }
     
@@ -219,7 +218,7 @@ struct ContentView: View {
             .fontWeight(.bold)
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .background(.gray)
+            .background(Color.sportBackground)
             .clipShape(RoundedRectangle(cornerRadius: 15))
     }
 }

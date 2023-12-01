@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2E7613E32B19EA3400E93192 /* DetailedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613E22B19EA3400E93192 /* DetailedGameView.swift */; };
 		2E7613E52B19EAB500E93192 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613E42B19EAB500E93192 /* Colors.swift */; };
+		2E7613E72B1A31C700E93192 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613E62B1A31C700E93192 /* TimerView.swift */; };
+		2E7613E92B1A61C800E93192 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613E82B1A61C800E93192 /* Player.swift */; };
+		2E7613EB2B1A6BBF00E93192 /* DetailedPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613EA2B1A6BBF00E93192 /* DetailedPlayerView.swift */; };
 		F16792732B1809E400A1B6B8 /* SportifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16792722B1809E400A1B6B8 /* SportifyApp.swift */; };
 		F16792752B1809E400A1B6B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16792742B1809E400A1B6B8 /* ContentView.swift */; };
 		F16792772B1809EA00A1B6B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16792762B1809EA00A1B6B8 /* Assets.xcassets */; };
@@ -45,6 +48,9 @@
 /* Begin PBXFileReference section */
 		2E7613E22B19EA3400E93192 /* DetailedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedGameView.swift; sourceTree = "<group>"; };
 		2E7613E42B19EAB500E93192 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2E7613E62B1A31C700E93192 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		2E7613E82B1A61C800E93192 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		2E7613EA2B1A6BBF00E93192 /* DetailedPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPlayerView.swift; sourceTree = "<group>"; };
 		F167926F2B1809E400A1B6B8 /* Sportify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sportify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16792722B1809E400A1B6B8 /* SportifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportifyApp.swift; sourceTree = "<group>"; };
 		F16792742B1809E400A1B6B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,8 +122,11 @@
 				F16792722B1809E400A1B6B8 /* SportifyApp.swift */,
 				F16792742B1809E400A1B6B8 /* ContentView.swift */,
 				F1DD6F642B182B1500F95BB0 /* Game.swift */,
+				2E7613E62B1A31C700E93192 /* TimerView.swift */,
 				F1DD6F662B182B3500F95BB0 /* Profile.swift */,
+				2E7613E82B1A61C800E93192 /* Player.swift */,
 				F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */,
+				2E7613EA2B1A6BBF00E93192 /* DetailedPlayerView.swift */,
 				2E7613E22B19EA3400E93192 /* DetailedGameView.swift */,
 				2E7613E42B19EAB500E93192 /* Colors.swift */,
 				F16792782B1809EA00A1B6B8 /* Preview Content */,
@@ -291,15 +300,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E7613E92B1A61C800E93192 /* Player.swift in Sources */,
 				F16792752B1809E400A1B6B8 /* ContentView.swift in Sources */,
 				2E7613E52B19EAB500E93192 /* Colors.swift in Sources */,
 				F1DD6F6D2B1932EE00F95BB0 /* Ticket.swift in Sources */,
+				2E7613E72B1A31C700E93192 /* TimerView.swift in Sources */,
 				2E7613E32B19EA3400E93192 /* DetailedGameView.swift in Sources */,
 				F1DD6F712B197B6B00F95BB0 /* NetworkingManager.swift in Sources */,
 				F1DD6F692B182B7300F95BB0 /* DetailedGameController.swift in Sources */,
 				F1DD6F652B182B1500F95BB0 /* Game.swift in Sources */,
 				F1DD6F672B182B3500F95BB0 /* Profile.swift in Sources */,
 				F16792732B1809E400A1B6B8 /* SportifyApp.swift in Sources */,
+				2E7613EB2B1A6BBF00E93192 /* DetailedPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
