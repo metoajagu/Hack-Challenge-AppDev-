@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SDWebImage
+import SDWebImageSwiftUI
 
 struct DetailedPlayerView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
@@ -14,8 +16,22 @@ struct DetailedPlayerView: View {
     var body: some View {
         VStack{
             ScrollView(.vertical){
+                Spacer()
+                WebImage(url: URL(string: player.picture))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 300)
+                Text("\(player.name) - Age: \(player.age)")
+                    .font(.title)
                 
-                Text("PLAYER VIEW")
+                Divider()
+                
+                Text("About \(player.name):")
+                
+                Spacer()
+                
+                Text("\(player.bio)")
+                
             }
         }
     }
