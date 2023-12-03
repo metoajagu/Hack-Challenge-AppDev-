@@ -25,7 +25,6 @@
 		F1DD6F672B182B3500F95BB0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F662B182B3500F95BB0 /* Profile.swift */; };
 		F1DD6F692B182B7300F95BB0 /* DetailedGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */; };
 		F1DD6F6D2B1932EE00F95BB0 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */; };
-		F1DD6F712B197B6B00F95BB0 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6F702B197B6A00F95BB0 /* NetworkingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +51,7 @@
 		2E7613EA2B1A6BBF00E93192 /* DetailedPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPlayerView.swift; sourceTree = "<group>"; };
 		2E7613F02B1AC20000E93192 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2E7614432B1B002A00E93192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2E7614462B1D1B3A00E93192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F167926F2B1809E400A1B6B8 /* Sportify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sportify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16792722B1809E400A1B6B8 /* SportifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportifyApp.swift; sourceTree = "<group>"; };
 		F16792742B1809E400A1B6B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,8 +66,6 @@
 		F1DD6F662B182B3500F95BB0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		F1DD6F682B182B7300F95BB0 /* DetailedGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedGameController.swift; sourceTree = "<group>"; };
 		F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
-		F1DD6F702B197B6A00F95BB0 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
-		F1DD6F722B1AFEF300F95BB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */,
-				2E7613F02B1AC20000E93192 /* ViewModel.swift */,
 				F1DD6F642B182B1500F95BB0 /* Game.swift */,
 				F1DD6F662B182B3500F95BB0 /* Profile.swift */,
 				2E7613E82B1A61C800E93192 /* Player.swift */,
@@ -131,7 +128,7 @@
 		2E7613EF2B1A98AF00E93192 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F1DD6F702B197B6A00F95BB0 /* NetworkingManager.swift */,
+				2E7613F02B1AC20000E93192 /* ViewModel.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -160,11 +157,8 @@
 		F16792712B1809E400A1B6B8 /* Sportify */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				F1DD6F722B1AFEF300F95BB0 /* Info.plist */,
-=======
+				2E7614462B1D1B3A00E93192 /* Info.plist */,
 				2E7614432B1B002A00E93192 /* Info.plist */,
->>>>>>> 9451c8c5c060fd5a4cd0c4307ce8b9731eedd40e
 				2E7613ED2B1A97E500E93192 /* Extensions */,
 				2E7613EC2B1A978B00E93192 /* Models */,
 				2E7613EE2B1A988200E93192 /* Views */,
@@ -344,7 +338,6 @@
 				2E7613E52B19EAB500E93192 /* Colors.swift in Sources */,
 				F1DD6F6D2B1932EE00F95BB0 /* Ticket.swift in Sources */,
 				2E7613E32B19EA3400E93192 /* DetailedGameView.swift in Sources */,
-				F1DD6F712B197B6B00F95BB0 /* NetworkingManager.swift in Sources */,
 				F1DD6F692B182B7300F95BB0 /* DetailedGameController.swift in Sources */,
 				F1DD6F652B182B1500F95BB0 /* Game.swift in Sources */,
 				F1DD6F672B182B3500F95BB0 /* Profile.swift in Sources */,
@@ -424,7 +417,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_TESTING_SEARCH_PATHS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -488,7 +480,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTING_SEARCH_PATHS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -519,9 +510,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sportify/Preview Content\"";
 				DEVELOPMENT_TEAM = T8F54UG43X;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sportify/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -550,9 +541,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sportify/Preview Content\"";
 				DEVELOPMENT_TEAM = T8F54UG43X;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sportify/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

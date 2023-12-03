@@ -1,40 +1,20 @@
+
 //
 //  ContentView.swift
 //  Sportify
 //
 //  Created by Meto Ajagu on 11/29/23.
 //
-
 import SwiftUI
 import UIKit
 import SDWebImageSwiftUI
 import Alamofire
 import SDWebImage
-
-//@State private func fetchRoster() {
-//        NetworkingManager.shared.fetchRoster { [weak self] events in
-//            guard let self = self else { return }
-//            self.events = events
-//    }
-class RosterViewModel: ObservableObject {
-    @Published var events: [Game] = []
-    
-     func fetchRoster() {
-        NetworkingManager.shared.fetchRoster { [weak self] fetchedEvents in
-            guard let self = self else { return }
-            self.events = events
-
-            // Perform UI update on main queue
-            DispatchQueue.main.async {
-                self.events = fetchedEvents
-            }
-        }
-    }
-}
-
 struct ContentView: View {
+    
     @StateObject var viewModelC = ViewModel(type: "current")
     @StateObject var viewModelF = ViewModel(type: "future")
+    
     var body: some View {
         NavigationStack {
             ScrollView(.vertical){
@@ -82,8 +62,6 @@ struct ContentView: View {
                             Spacer()
                         }
                     }
-
-        
                     
                     VStack(alignment: .leading) {
                         VStack(spacing: 0){
@@ -97,10 +75,9 @@ struct ContentView: View {
                       }
                     
                         
-
                         ForEach(viewModelC.games) { game in
                             NavigationLink (
-                                destination: DetailedGameView(event: game),
+                                destination: DetailedGameView(game: game),
                                 label: {
                                     VStack{
                                         Spacer()
@@ -137,12 +114,11 @@ struct ContentView: View {
                             ).buttonStyle(PlainButtonStyle())
                            
                         }
-                    }
-                    .onAppear {
-                        viewModelC.fetchData()
-                    }
-                    
-                    VStack(alignment: .leading) {
+}
+                  .onAppear {
+                      viewModelC.fetchData()
+}
+VStack(alignment: .leading) {
                         VStack(spacing: 0){
                             Text("Upcoming Events")
                                 .font(.largeTitle)
@@ -153,14 +129,13 @@ struct ContentView: View {
                             Divider()
                             
                         }
-          
+                        
                         ForEach(viewModelF.games) { game in
                             NavigationLink (
-                                destination: DetailedGameView(event: game),
+                                destination: DetailedGameView(game: game),
                                 label: {
                                     VStack{
                                         Spacer()
-
                                         HStack {
                                             Spacer()
                                             WebImage(url: URL(string: game.away_team_logo))
@@ -182,7 +157,6 @@ struct ContentView: View {
                                             Text("\(game.date_time.formatted(date: .long, time: .shortened))")
                                         }
                                         Spacer()
-
                                     }
                                     .background {
                                         RoundedRectangle(cornerRadius: 4)
@@ -200,7 +174,6 @@ struct ContentView: View {
             }
         }
     }
-    
     
     private func gameInfo(_
                           game: Game) -> some View {
@@ -265,9 +238,6 @@ struct ContentView: View {
             .clipShape(RoundedRectangle(cornerRadius: 15))
     }
 }
-
-
-
 #Preview {
     ContentView()
 }

@@ -4,13 +4,10 @@
 //
 //  Created by Charles Liggins on 12/1/23.
 //
-
 import SwiftUI
 import UIKit
 import SDWebImageSwiftUI
 import SDWebImage
-
-
 struct DetailedGameView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     let game: Game
@@ -19,7 +16,6 @@ struct DetailedGameView: View {
     @State private var secRemaining = 59
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-
     init(game: Game) {
         self.game = game
         _minRemaining = State(initialValue: getMinutesDifferenceFromTwoDates(start: Date.now, end: game.date_time))
@@ -64,7 +60,6 @@ struct DetailedGameView: View {
                     .font(.title)
                 
                 //Location and date
-                Spacer()
                 
                 HStack{
                     Text("Time Left: \(minRemaining): \(secRemaining)")
@@ -82,37 +77,14 @@ struct DetailedGameView: View {
                     .font(.title)
                 Divider()
                 
+            }
+            VStack{
                 HStack {
-//                    ForEach(games) { game in
-                        VStack{
-                            ForEach(game.home_roster) { player in
-                                NavigationLink (
-                                    destination:DetailedPlayerView(player: player),
-                                    label: {
-                                        HStack{
-                                            WebImage(url: URL(string: player.picture))
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 50, height: 50)
-                                            VStack{
-                                                Text("\(player.name)")
-                                                    .font(.subheadline)
-                                                Text("Age: \(player.age)")
-                                                    .font(.subheadline)
-                                            }
-                                        }
-                                    }).buttonStyle(PlainButtonStyle())
-                                
-                                Divider()
-                            }
-                        }
-//                  }
-                    
-                    VStack {
-//                        ForEach(games) { game in
-                            ForEach(game.away_roster) { player in
-                                NavigationLink (destination:DetailedPlayerView(player: player),
-                                                label: {
+                    VStack{
+                        ForEach(game.home_roster) { player in
+                            NavigationLink (
+                                destination:DetailedPlayerView(player: player),
+                                label: {
                                     HStack{
                                         WebImage(url: URL(string: player.picture))
                                             .resizable()
@@ -126,39 +98,51 @@ struct DetailedGameView: View {
                                         }
                                     }
                                 }).buttonStyle(PlainButtonStyle())
-                                Divider()
-                            }
+                            
+                            Divider()
                         }
                     }
-//              }
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                
-            }.onReceive(timer) {
-                time in
-                if minRemaining >= 0 && secRemaining > 0{
-                    secRemaining -= 1
-                    if secRemaining == 0 && minRemaining >= 1 {
-                        minRemaining -= 1
-                        secRemaining += 59
+                    VStack {
+                        ForEach(game.away_roster) { player in
+                            NavigationLink (destination:DetailedPlayerView(player: player),
+                                            label: {
+                                HStack{
+                                    WebImage(url: URL(string: player.picture))
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50, height: 50)
+                                    VStack{
+                                        Text("\(player.name)")
+                                            .font(.subheadline)
+                                        Text("Age: \(player.age)")
+                                            .font(.subheadline)
+                                    }
+                                }
+                            }).buttonStyle(PlainButtonStyle())
+                            Divider()
+                        }
                     }
                 }
+                Spacer()
             }
-        }
-    }
+              
+}  .onReceive(timer) {
+         time in
+         if minRemaining >= 0 && secRemaining > 0{
+             secRemaining -= 1
+             if secRemaining == 0 && minRemaining >= 1 {
+                 minRemaining -= 1
+                 secRemaining += 59
+             }
+         }
+     }
+ }
 }
-
 
 
 private func getMinutesDifferenceFromTwoDates(start: Date, end: Date) -> Int
    {
-
        let diff = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
-
        let hours = diff / 3600
        let minutes = (diff - hours * 3600) / 60
        return minutes

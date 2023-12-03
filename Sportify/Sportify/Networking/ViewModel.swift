@@ -41,26 +41,6 @@ class ViewModel: ObservableObject {
             }
         }
     }
-    
-//    func fetchFuture() {
-//        
-//        let decoder = JSONDecoder()
-//        decoder.dateDecodingStrategy = .iso8601
-//        
-//        AF.request(future, method: .get)
-//            .responseDecodable(of: [Game].self,decoder: decoder) { response in
-//                switch response.result {
-//                case .success(let result):
-//                    print("Success")
-//                    DispatchQueue.main.async {
-//                        self.games = result
-//                    }
-//                case .failure(let error):
-//                    print("Error: \(error)")
-//          }
-//        }
-//      }
-    
 // end
    }
 

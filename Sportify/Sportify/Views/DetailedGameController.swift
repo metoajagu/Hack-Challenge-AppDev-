@@ -1,3 +1,5 @@
+
+
 //
 //  DetailedGameController.swift
 //  Sportify
@@ -7,11 +9,14 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import SDWebImage
-
 struct DetailedGameController: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    
+    @StateObject var viewModelC = ViewModel(type: "current")
+    @StateObject var viewModelF = ViewModel(type: "future")
+    
     let sportType: String
-    let viewModel = RosterViewModel()
+    
     var body: some View {
         
         NavigationStack{
@@ -67,7 +72,6 @@ struct DetailedGameController: View {
                         Spacer()
                         
                     }
-
                     VStack(alignment: .leading) {
                         VStack(spacing: 0){
                             Text("Current Events")
@@ -78,70 +82,8 @@ struct DetailedGameController: View {
                             
                             Divider()
                         }
-                        //What happens if there aren't any upcoming or current events???
                         
-                        //Implement filter for genders
                         ForEach(viewModelC.games.filter({$0.sport == sportType})) { game in
-                            NavigationLink (
-                                destination: DetailedGameView(event: event),
-                                label: {
-                                    
-                                    VStack{
-                                        Spacer()
-                                        HStack {
-                                            Spacer()
-
-                                            WebImage(url: URL(string: game.away_team_logo))
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 50, height: 50)
-                                            Text(game.sex)
-                                            Text("\(game.sport) vs.")
-                                            Text("\(game.away_team_name)")
-
-                                            Image(systemName: "chevron.right")
-                                                .font(.system(size: 20, weight: .bold))
-                                            
-                                            Spacer()
-                                        }
-                                        HStack {
-                                            Text("\(game.location) ")
-                                            Text("-")
-                                                .bold()
-                                            //  .multilineTextAlignment(.leading)
-                                            Text("7 - 0")
-                                            //   .font(.headl)
-                                            
-                                        }
-                                        
-                                        Spacer()
-                                    }
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .fill(Color.cellBackground)
-                                            .stroke(Color.black, lineWidth: 2)
-                                    }
-                                    .padding()
-                                    
-                                }
-                            ).buttonStyle(PlainButtonStyle())
-                            
-                        }
-                    }
-                    .onAppear(){
-                        viewModelC.fetchData()
-                    }
-                    VStack(alignment: .leading) {
-                        VStack(spacing: 0){
-                            Text("Upcoming Events")
-                                .font(.largeTitle)
-                                .foregroundColor(.black)
-                                .frame(width: 350, height: 50, alignment: .leading)
-                                .fontWeight(.bold)
-                            
-                            Divider()
-                        }
-                        ForEach(viewModelF.games.filter({$0.sport == sportType})) { game in
                             NavigationLink (
                                 destination: DetailedGameView(game: game),
                                 label: {
@@ -187,52 +129,96 @@ struct DetailedGameController: View {
                         }
                     }
                     .onAppear(){
-                        viewModelF.fetchData()
+                        viewModelC.fetchData()
                     }
-                       
+
+                        
+                        VStack(alignment: .leading) {
+                            VStack(spacing: 0){
+                                Text("Upcoming Events")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.black)
+                                    .frame(width: 350, height: 50, alignment: .leading)
+                                    .fontWeight(.bold)
+                                
+                                Divider()
+                            }
+                            
+                            ForEach(viewModelF.games.filter({$0.sport == sportType})) { game in
+                                NavigationLink (
+                                    destination: DetailedGameView(game: game),
+                                    label: {
+                                        
+                                        VStack{
+                                            Spacer()
+                                            HStack {
+                                                Spacer()
+                                                WebImage(url: URL(string: game.away_team_logo))
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 50, height: 50)
+                                                Text(game.sex)
+                                                Text("\(game.sport) vs.")
+                                                Text("\(game.away_team_name)")
+                                                Image(systemName: "chevron.right")
+                                                    .font(.system(size: 20, weight: .bold))
+                                                
+                                                Spacer()
+                                            }
+                                            HStack {
+                                                
+                                                Text("\(game.location) -")
+                                                    .multilineTextAlignment(.leading)
+                                                Text("\(game.date_time.formatted(date: .long, time: .shortened))")
+                                            }
+                                            
+                                            Spacer()
+                                        }
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 4)
+                                                .fill(Color.cellBackground)
+                                                .stroke(Color.black, lineWidth: 2)
+                                        }
+                                        .padding()
+                                        
+                                    }
+                                ).buttonStyle(PlainButtonStyle())
+                                
+                            }
+                        }
+                        .onAppear(){
+                            viewModelF.fetchData()
+                        }
+                        
                         
                         // Spacer()
-                            .navigationBarBackButtonHidden(true)
-                            .toolbar(content: {
-                                ToolbarItem (placement: .bottomBar)  {
-                                    
-                                    Button(action: {
-                                        presentationMode.wrappedValue.dismiss()
-                                    }, label: {
-                                        //  Image(systemName: "arrow.left")
-                                        Image(systemName: "house")
-                                            .foregroundColor(.black)
-                                        Text("home")
-                                            .foregroundColor(.black)
-                                    })
-                                    
-                                    
-                                    
-                                }
-                            })
+                        .navigationBarBackButtonHidden(true)
+                        .toolbar(content: {
+                            ToolbarItem (placement: .bottomBar)  {
+                                
+                                Button(action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }, label: {
+                                    //  Image(systemName: "arrow.left")
+                                    Image(systemName: "house")
+                                        .foregroundColor(.black)
+                                    Text("home")
+                                        .foregroundColor(.black)
+                                })
+                                
+                                
+                                
+                            }
+                        })
                     }
-                
+                    
+                }
             }
         }
     }
-    
-    
-    
-    private func gameInfo(_
-                          game: Game) -> some View {
-        
-        return VStack(alignment: .leading) {
-            // Text(game)
-            Text(game.sport)
-                .font(.headline)
-                .fontWeight(.bold)
-            Text(game.location)
-                .font(.subheadline)
-                .fontWeight(.medium)
-        }
-    }
-}
-#Preview {
-    DetailedGameController(sportType: "RANDOM SPORT")
-}
 
+    
+//    
+//#Preview {
+//    DetailedGameController(sportType: "RANDOM SPORT")
+//}
