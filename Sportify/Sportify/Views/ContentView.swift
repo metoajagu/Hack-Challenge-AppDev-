@@ -115,10 +115,10 @@ struct ContentView: View {
                             ).buttonStyle(PlainButtonStyle())
                            
                         }
-                        
-                    }.onAppear {
+                    }
+                    .onAppear {
                         viewModelC.fetchData()
-                }
+                    }
                     
                     VStack(alignment: .leading) {
                         VStack(spacing: 0){
