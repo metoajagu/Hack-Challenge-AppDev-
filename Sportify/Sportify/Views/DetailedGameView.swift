@@ -81,76 +81,76 @@ struct DetailedGameView: View {
                     .font(.title)
                 Divider()
                 
-//                HStack{
+                HStack {
 //                    ForEach(games) { game in
-//                        VStack{
-//                            ForEach(game.homeRoster) { player in
-//                                NavigationLink (
-//                                    destination:DetailedPlayerView(player: player),
-//                                    label: {
-//                                        HStack{
-//                                            WebImage(url: URL(string: player.picture))
-//                                                .resizable()
-//                                                .scaledToFit()
-//                                                .frame(width: 50, height: 50)
-//                                            VStack{
-//                                                Text("\(player.name)")
-//                                                    .font(.subheadline)
-//                                                Text("Age: \(player.age)")
-//                                                    .font(.subheadline)
-//                                            }
-//                                        }
-//                                    }).buttonStyle(PlainButtonStyle())
-//
-//                                Divider()
-//                            }
-//                        }
-                    }
+                        VStack{
+                            ForEach(game.home_roster) { player in
+                                NavigationLink (
+                                    destination:DetailedPlayerView(player: player),
+                                    label: {
+                                        HStack{
+                                            WebImage(url: URL(string: player.picture))
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 50, height: 50)
+                                            VStack{
+                                                Text("\(player.name)")
+                                                    .font(.subheadline)
+                                                Text("Age: \(player.age)")
+                                                    .font(.subheadline)
+                                            }
+                                        }
+                                    }).buttonStyle(PlainButtonStyle())
+                                
+                                Divider()
+                            }
+                        }
+//                  }
                     
-//                    VStack {
+                    VStack {
 //                        ForEach(games) { game in
-//                            ForEach(game.awayRoster) { player in
-//                                NavigationLink (destination:DetailedPlayerView(player: player),
-//                                                label: {
-//                                    HStack{
-//                                        WebImage(url: URL(string: player.picture))
-//                                            .resizable()
-//                                            .scaledToFit()
-//                                            .frame(width: 50, height: 50)
-//                                        VStack{
-//                                            Text("\(player.name)")
-//                                                .font(.subheadline)
-//                                            Text("Age: \(player.age)")
-//                                                .font(.subheadline)
-//                                        }
-//                                    }
-//                                }).buttonStyle(PlainButtonStyle())
-//                                Divider()
-//                            }
-//                        }
-//                    }
+                            ForEach(game.away_roster) { player in
+                                NavigationLink (destination:DetailedPlayerView(player: player),
+                                                label: {
+                                    HStack{
+                                        WebImage(url: URL(string: player.picture))
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 50, height: 50)
+                                        VStack{
+                                            Text("\(player.name)")
+                                                .font(.subheadline)
+                                            Text("Age: \(player.age)")
+                                                .font(.subheadline)
+                                        }
+                                    }
+                                }).buttonStyle(PlainButtonStyle())
+                                Divider()
+                            }
+                        }
+                    }
+//              }
+                
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                
+            }.onReceive(timer) {
+                time in
+                if minRemaining >= 0 && secRemaining > 0{
+                    secRemaining -= 1
+                    if secRemaining == 0 && minRemaining >= 1 {
+                        minRemaining -= 1
+                        secRemaining += 59
+                    }
                 }
-                
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                
-//            }.onReceive(timer) {
-//                time in
-//                if minRemaining >= 0 && secRemaining > 0{
-//                    secRemaining -= 1
-//                    if secRemaining == 0 && minRemaining >= 1 {
-//                        minRemaining -= 1
-//                        secRemaining += 59
-//                    }
-//                }
-//            }
+            }
         }
     }
-
+}
 
 
 

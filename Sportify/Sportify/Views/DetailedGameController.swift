@@ -100,11 +100,10 @@ struct DetailedGameController: View {
                                             Spacer()
                                         }
                                         HStack {
-                                            
                                             Text("\(game.location) ")
                                             Text("-")
                                                 .bold()
-                                            //    .multilineTextAlignment(.leading)
+                                            //  .multilineTextAlignment(.leading)
                                             Text("7 - 0")
                                             //   .font(.headl)
                                             

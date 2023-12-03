@@ -14,14 +14,15 @@ class ViewModel: ObservableObject {
     
     @Published var games: [Game] = []
 
+    let current = "http://34.48.20.64/games/current/"
+    let future = "http://34.48.20.64/games/future/"
     
-       func fetchData() {
+    func fetchCurrent() {
            
            let decoder = JSONDecoder()
            decoder.dateDecodingStrategy = .iso8601
            
-           
-           AF.request("http://34.48.20.64/games/", method: .get)
+           AF.request(current, method: .get)
                .responseDecodable(of: [Game].self,decoder: decoder) { response in
                    switch response.result {
                    case .success(let result):
@@ -34,7 +35,28 @@ class ViewModel: ObservableObject {
             }
         }
     }
-}
+    
+    func fetchFuture() {
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
+        AF.request(future, method: .get)
+            .responseDecodable(of: [Game].self,decoder: decoder) { response in
+                switch response.result {
+                case .success(let result):
+                    print("Success")
+                    DispatchQueue.main.async {
+                        self.games = result
+                    }
+                case .failure(let error):
+                    print("Error: \(error)")
+          }
+        }
+      }
+    
+// end
+   }
 
 
     

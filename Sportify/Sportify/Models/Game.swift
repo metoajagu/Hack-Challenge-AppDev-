@@ -12,7 +12,6 @@ struct Game: Codable, Identifiable{
     
     let id = UUID()
     let sport: String
-    //let image: String
     let sex: String
     let location: String
     let date_time: Date
@@ -21,13 +20,12 @@ struct Game: Codable, Identifiable{
     let num_tickets: Int
     let tickets: [Ticket]
     let users_attending: [Profile]
-//    let homeRoster: [Player]
-//    let awayRoster: [Player]
+    let home_roster: [Player]
+    let away_roster: [Player]
 }
 
 var games: [Game] = [Game(
     sport: "Basketball",
-  //  image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cornell_%22C%22_logo.svg/1587px-Cornell_%22C%22_logo.svg.png",
     sex: "Men's",
     location: "Bartels",
     date_time: Date(),
@@ -35,5 +33,7 @@ var games: [Game] = [Game(
     away_team_name: "Harvard",
     num_tickets: 200,
     tickets: [],
-    users_attending: []
+    users_attending: [],
+    home_roster: [],
+    away_roster: []
 )]

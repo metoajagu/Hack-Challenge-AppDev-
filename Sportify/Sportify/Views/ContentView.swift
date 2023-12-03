@@ -116,7 +116,7 @@ struct ContentView: View {
                         }
                         
                     }.onAppear {
-                        viewModel.fetchData()
+                        viewModel.fetchCurrent()
                 }
                     
                     VStack(alignment: .leading) {
@@ -131,7 +131,7 @@ struct ContentView: View {
                             
                         }
                         
-                        ForEach(games) { game in
+                        ForEach(viewModel.games) { game in
                             NavigationLink (
                                 destination: DetailedGameView(game: game),
                                 label: {
@@ -170,6 +170,8 @@ struct ContentView: View {
                                 }
                             ).buttonStyle(PlainButtonStyle())
                         }
+                    } .onAppear() {
+                        viewModel.fetchFuture()
                     }
                 }
             }
