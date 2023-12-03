@@ -10,8 +10,9 @@ import SDWebImage
 
 struct DetailedGameController: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    let sportType: String
     
+    let sportType: String
+    let viewModel = RosterViewModel()
     var body: some View {
         
         NavigationStack{
@@ -78,22 +79,24 @@ struct DetailedGameController: View {
                     //What happens if there aren't any upcoming or current events???
                     
                     //Implement filter for genders
-                        ForEach(games.filter({$0.sport == sportType})) { game in
+//                        ForEach(games.filter({$0.sport == sportType})) { game in
+                    List(viewModel.events) {
+                        event in
                             NavigationLink (
-                                destination: DetailedGameView(game: game),
+                                destination: DetailedGameView(event: event),
                                 label: {
                                     
                                     VStack{
                                         Spacer()
                                         HStack {
                                             Spacer()
-                                            WebImage(url: URL(string: game.awayLogo))
+                                            WebImage(url: URL(string: event.away_team_logo))
                                                 .resizable()
                                                 .scaledToFit()
                                                 .frame(width: 50, height: 50)
-                                            Text(game.gender)
-                                            Text("\(game.sport) vs.")
-                                            Text("\(game.away)")
+                                            Text(event.sex)
+                                            Text("\(event.sport) vs.")
+                                            Text("\(event.away_team_name)")
                                             Image(systemName: "chevron.right")
                                                 .font(.system(size: 20, weight: .bold))
                                             
@@ -101,7 +104,7 @@ struct DetailedGameController: View {
                                         }
                                         HStack {
                                             
-                                            Text("\(game.location) ")
+                                            Text("\(event.location) ")
                                             Text("-")
                                                 .bold()
                                             //    .multilineTextAlignment(.leading)

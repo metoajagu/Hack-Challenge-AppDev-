@@ -10,12 +10,35 @@ import UIKit
 import SDWebImageSwiftUI
 import SDWebImage
 
+//@State private func fetchRoster() {
+//        NetworkingManager.shared.fetchRoster { [weak self] events in
+//            guard let self = self else { return }
+//            self.events = events
+//    }
+class RosterViewModel: ObservableObject {
+    @Published var events: [Game] = []
+    
+     func fetchRoster() {
+        NetworkingManager.shared.fetchRoster { [weak self] fetchedEvents in
+            guard let self = self else { return }
+            self.events = events
+
+            // Perform UI update on main queue
+            DispatchQueue.main.async {
+                self.events = fetchedEvents
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     
    //@State private var score: Float = 0.0
-   //@State private var events: [Game] = games
    //let index: Int = 0
-    
+//   @StateObject private var viewModel = RosterViewModel()
+    @State private var data: [Game] = []
+    private let dataManager = NetworkingManager()
+    private let refresh = UIRefreshControl()
     var body: some View {
         NavigationStack {
             ScrollView(.vertical){
@@ -63,6 +86,8 @@ struct ContentView: View {
                             Spacer()
                         }
                     }
+
+        
                     
                     VStack(alignment: .leading) {
                         VStack(spacing: 0){
@@ -75,21 +100,21 @@ struct ContentView: View {
                             Divider()
                         }
                         
-                        ForEach(games) { game in
+                        List(data, id: \.id) { game in
                             NavigationLink (
-                                destination: DetailedGameView(game: game),
+                                destination: DetailedGameView(event: game),
                                 label: {
                                     VStack{
                                         Spacer()
                                         HStack {
                                             Spacer()
-                                            WebImage(url: URL(string: game.awayLogo))
+                                            WebImage(url: URL(string: game.away_team_logo))
                                                 .resizable()
                                                 .scaledToFit()
                                                 .frame(width: 50, height: 50)
-                                            Text(game.gender)
+                                            Text(game.sex)
                                             Text("\(game.sport) vs.")
-                                            Text("\(game.away)")
+                                            Text("\(game.away_team_name)")
                                             Image(systemName: "chevron.right")
                                                 .font(.system(size: 20, weight: .bold))
                                             
@@ -113,6 +138,12 @@ struct ContentView: View {
                                 }
                             ).buttonStyle(PlainButtonStyle())
                         }
+                        .onAppear {
+                            dataManager.fetchRoster{ fetchedData in
+                                data = fetchedData
+                                
+                            }
+                        }
                         
                     }
                     
@@ -127,22 +158,22 @@ struct ContentView: View {
                             Divider()
                             
                         }
-                        ForEach(games) { game in
+                        List(data, id: \.id) { game in
                             NavigationLink (
-                                destination: DetailedGameView(game: game),
+                                destination: DetailedGameView(event: game),
                                 label: {
                                     VStack{
                                         Spacer()
 
                                         HStack {
                                             Spacer()
-                                            WebImage(url: URL(string: game.awayLogo))
+                                            WebImage(url: URL(string: game.away_team_logo))
                                                 .resizable()
                                                 .scaledToFit()
                                                 .frame(width: 50, height: 50)
-                                            Text(game.gender)
+                                            Text(game.sex)
                                             Text("\(game.sport) vs.")
-                                            Text("\(game.away)")
+                                            Text("\(game.away_team_name)")
                                             Image(systemName: "chevron.right")
                                                 .font(.system(size: 20, weight: .bold))
                         
@@ -152,7 +183,7 @@ struct ContentView: View {
                                             
                                             Text("\(game.location) -")
                                                 .multilineTextAlignment(.leading)
-                                            Text("\(game.dateTime.formatted(date: .long, time: .shortened))")
+                                            Text("\(game.date_time.formatted(date: .long, time: .shortened))")
                                         }
                                         Spacer()
 
@@ -171,6 +202,7 @@ struct ContentView: View {
             }
         }
     }
+    
     
     private func gameInfo(_
                           game: Game) -> some View {

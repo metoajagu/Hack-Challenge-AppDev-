@@ -19,9 +19,9 @@ struct DetailedGameView: View {
     @State private var secRemaining = 59
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    init(game: Game) {
-        self.game = game
-        _minRemaining = State(initialValue: getMinutesDifferenceFromTwoDates(start: Date.now, end: game.dateTime))
+    init(event: Game) {
+        self.game = event
+        _minRemaining = State(initialValue: getMinutesDifferenceFromTwoDates(start: Date.now, end: game.date_time))
     }
     
     var body: some View {
@@ -38,7 +38,7 @@ struct DetailedGameView: View {
                     Text("VS.")
                         .font(.title)
                     
-                    WebImage(url: URL(string: game.awayLogo))
+                    WebImage(url: URL(string: game.away_team_logo))
                         .resizable()
                         .scaledToFit()
                         .frame(width: 90, height: 90, alignment: .leading)
@@ -59,7 +59,7 @@ struct DetailedGameView: View {
                         })
                     
                 }
-                Text("\(game.gender) \(game.sport)")
+                Text("\(game.sex) \(game.sport)")
                     .font(.title)
                 
                 //Location and date
@@ -82,53 +82,55 @@ struct DetailedGameView: View {
                 Divider()
                 
                 HStack{
-                    ForEach(games) { game in
-                        VStack{
-                            ForEach(game.homeRoster) { player in
-                                NavigationLink (
-                                    destination:DetailedPlayerView(player: player),
-                                    label: {
-                                        HStack{
-                                            WebImage(url: URL(string: player.picture))
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 50, height: 50)
-                                            VStack{
-                                                Text("\(player.name)")
-                                                    .font(.subheadline)
-                                                Text("Age: \(player.age)")
-                                                    .font(.subheadline)
-                                            }
-                                        }
-                                    }).buttonStyle(PlainButtonStyle())
-
-                                Divider()
-                            }
-                        }
-                    }
+//                    ForEach(games) { game in
+//                    List(viewModel.events) {
+//                        event in
+//                        VStack{
+//                            ForEach(game.homeRoster) { player in
+//                                NavigationLink (
+//                                    destination:DetailedPlayerView(player: player),
+//                                    label: {
+//                                        HStack{
+//                                            WebImage(url: URL(string: player.picture))
+//                                                .resizable()
+//                                                .scaledToFit()
+//                                                .frame(width: 50, height: 50)
+//                                            VStack{
+//                                                Text("\(player.name)")
+//                                                    .font(.subheadline)
+//                                                Text("Age: \(player.age)")
+//                                                    .font(.subheadline)
+//                                            }
+//                                        }
+//                                    }).buttonStyle(PlainButtonStyle())
+//
+//                                Divider()
+//                            }
+//                        }
+//                    }
                     
-                    VStack {
-                        ForEach(games) { game in
-                            ForEach(game.awayRoster) { player in
-                                NavigationLink (destination:DetailedPlayerView(player: player),
-                                                label: {
-                                    HStack{
-                                        WebImage(url: URL(string: player.picture))
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 50, height: 50)
-                                        VStack{
-                                            Text("\(player.name)")
-                                                .font(.subheadline)
-                                            Text("Age: \(player.age)")
-                                                .font(.subheadline)
-                                        }
-                                    }
-                                }).buttonStyle(PlainButtonStyle())
-                                Divider()
-                            }
-                        }
-                    }
+//                    VStack {
+//                        ForEach(games) { game in
+//                            ForEach(game.awayRoster) { player in
+//                                NavigationLink (destination:DetailedPlayerView(player: player),
+//                                                label: {
+//                                    HStack{
+//                                        WebImage(url: URL(string: player.picture))
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 50, height: 50)
+//                                        VStack{
+//                                            Text("\(player.name)")
+//                                                .font(.subheadline)
+//                                            Text("Age: \(player.age)")
+//                                                .font(.subheadline)
+//                                        }
+//                                    }
+//                                }).buttonStyle(PlainButtonStyle())
+//                                Divider()
+//                            }
+//                        }
+//                    }
                 }
                 
                 Spacer()
