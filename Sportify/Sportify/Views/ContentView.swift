@@ -13,7 +13,8 @@ import SDWebImage
 
 struct ContentView: View {
     
-     @StateObject var viewModel = ViewModel()
+    @StateObject var viewModelC = ViewModel(type: "current")
+    @StateObject var viewModelF = ViewModel(type: "future")
     
     var body: some View {
         NavigationStack {
@@ -75,7 +76,7 @@ struct ContentView: View {
                       }
                     
                         
-                        ForEach(viewModel.games) { game in
+                        ForEach(viewModelC.games) { game in
                             NavigationLink (
                                 destination: DetailedGameView(game: game),
                                 label: {
@@ -116,7 +117,7 @@ struct ContentView: View {
                         }
                         
                     }.onAppear {
-                        viewModel.fetchCurrent()
+                        viewModelC.fetchData()
                 }
                     
                     VStack(alignment: .leading) {
@@ -131,7 +132,7 @@ struct ContentView: View {
                             
                         }
                         
-                        ForEach(viewModel.games) { game in
+                        ForEach(viewModelF.games) { game in
                             NavigationLink (
                                 destination: DetailedGameView(game: game),
                                 label: {
@@ -171,7 +172,7 @@ struct ContentView: View {
                             ).buttonStyle(PlainButtonStyle())
                         }
                     } .onAppear() {
-                        viewModel.fetchFuture()
+                        viewModelF.fetchData()
                     }
                 }
             }
