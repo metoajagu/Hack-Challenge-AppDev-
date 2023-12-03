@@ -11,6 +11,7 @@
 		2E7613E52B19EAB500E93192 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613E42B19EAB500E93192 /* Colors.swift */; };
 		2E7613E92B1A61C800E93192 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613E82B1A61C800E93192 /* Player.swift */; };
 		2E7613EB2B1A6BBF00E93192 /* DetailedPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613EA2B1A6BBF00E93192 /* DetailedPlayerView.swift */; };
+		2E7613F12B1AC20000E93192 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7613F02B1AC20000E93192 /* ViewModel.swift */; };
 		F16792732B1809E400A1B6B8 /* SportifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16792722B1809E400A1B6B8 /* SportifyApp.swift */; };
 		F16792752B1809E400A1B6B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16792742B1809E400A1B6B8 /* ContentView.swift */; };
 		F16792772B1809EA00A1B6B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16792762B1809EA00A1B6B8 /* Assets.xcassets */; };
@@ -49,6 +50,8 @@
 		2E7613E42B19EAB500E93192 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2E7613E82B1A61C800E93192 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		2E7613EA2B1A6BBF00E93192 /* DetailedPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPlayerView.swift; sourceTree = "<group>"; };
+		2E7613F02B1AC20000E93192 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		2E7614432B1B002A00E93192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F167926F2B1809E400A1B6B8 /* Sportify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sportify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16792722B1809E400A1B6B8 /* SportifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportifyApp.swift; sourceTree = "<group>"; };
 		F16792742B1809E400A1B6B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				F1DD6F6C2B1932EE00F95BB0 /* Ticket.swift */,
+				2E7613F02B1AC20000E93192 /* ViewModel.swift */,
 				F1DD6F642B182B1500F95BB0 /* Game.swift */,
 				F1DD6F662B182B3500F95BB0 /* Profile.swift */,
 				2E7613E82B1A61C800E93192 /* Player.swift */,
@@ -155,6 +159,7 @@
 		F16792712B1809E400A1B6B8 /* Sportify */ = {
 			isa = PBXGroup;
 			children = (
+				2E7614432B1B002A00E93192 /* Info.plist */,
 				2E7613ED2B1A97E500E93192 /* Extensions */,
 				2E7613EC2B1A978B00E93192 /* Models */,
 				2E7613EE2B1A988200E93192 /* Views */,
@@ -339,6 +344,7 @@
 				F1DD6F652B182B1500F95BB0 /* Game.swift in Sources */,
 				F1DD6F672B182B3500F95BB0 /* Profile.swift in Sources */,
 				F16792732B1809E400A1B6B8 /* SportifyApp.swift in Sources */,
+				2E7613F12B1AC20000E93192 /* ViewModel.swift in Sources */,
 				2E7613EB2B1A6BBF00E93192 /* DetailedPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +504,7 @@
 		F16792942B1809EB00A1B6B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -506,8 +513,8 @@
 				DEVELOPMENT_TEAM = T8F54UG43X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sportify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -527,6 +534,7 @@
 		F16792952B1809EB00A1B6B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,8 +543,8 @@
 				DEVELOPMENT_TEAM = T8F54UG43X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sportify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

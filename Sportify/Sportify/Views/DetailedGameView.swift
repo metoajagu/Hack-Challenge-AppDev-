@@ -21,7 +21,7 @@ struct DetailedGameView: View {
     
     init(game: Game) {
         self.game = game
-        _minRemaining = State(initialValue: getMinutesDifferenceFromTwoDates(start: Date.now, end: game.dateTime))
+        _minRemaining = State(initialValue: getMinutesDifferenceFromTwoDates(start: Date.now, end: game.date_time))
     }
     
     var body: some View {
@@ -38,7 +38,7 @@ struct DetailedGameView: View {
                     Text("VS.")
                         .font(.title)
                     
-                    WebImage(url: URL(string: game.awayLogo))
+                    WebImage(url: URL(string: game.away_team_logo))
                         .resizable()
                         .scaledToFit()
                         .frame(width: 90, height: 90, alignment: .leading)
@@ -59,7 +59,7 @@ struct DetailedGameView: View {
                         })
                     
                 }
-                Text("\(game.gender) \(game.sport)")
+                Text("\(game.sex) \(game.sport)")
                     .font(.title)
                 
                 //Location and date
@@ -81,54 +81,54 @@ struct DetailedGameView: View {
                     .font(.title)
                 Divider()
                 
-                HStack{
-                    ForEach(games) { game in
-                        VStack{
-                            ForEach(game.homeRoster) { player in
-                                NavigationLink (
-                                    destination:DetailedPlayerView(player: player),
-                                    label: {
-                                        HStack{
-                                            WebImage(url: URL(string: player.picture))
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 50, height: 50)
-                                            VStack{
-                                                Text("\(player.name)")
-                                                    .font(.subheadline)
-                                                Text("Age: \(player.age)")
-                                                    .font(.subheadline)
-                                            }
-                                        }
-                                    }).buttonStyle(PlainButtonStyle())
-
-                                Divider()
-                            }
-                        }
+//                HStack{
+//                    ForEach(games) { game in
+//                        VStack{
+//                            ForEach(game.homeRoster) { player in
+//                                NavigationLink (
+//                                    destination:DetailedPlayerView(player: player),
+//                                    label: {
+//                                        HStack{
+//                                            WebImage(url: URL(string: player.picture))
+//                                                .resizable()
+//                                                .scaledToFit()
+//                                                .frame(width: 50, height: 50)
+//                                            VStack{
+//                                                Text("\(player.name)")
+//                                                    .font(.subheadline)
+//                                                Text("Age: \(player.age)")
+//                                                    .font(.subheadline)
+//                                            }
+//                                        }
+//                                    }).buttonStyle(PlainButtonStyle())
+//
+//                                Divider()
+//                            }
+//                        }
                     }
                     
-                    VStack {
-                        ForEach(games) { game in
-                            ForEach(game.awayRoster) { player in
-                                NavigationLink (destination:DetailedPlayerView(player: player),
-                                                label: {
-                                    HStack{
-                                        WebImage(url: URL(string: player.picture))
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 50, height: 50)
-                                        VStack{
-                                            Text("\(player.name)")
-                                                .font(.subheadline)
-                                            Text("Age: \(player.age)")
-                                                .font(.subheadline)
-                                        }
-                                    }
-                                }).buttonStyle(PlainButtonStyle())
-                                Divider()
-                            }
-                        }
-                    }
+//                    VStack {
+//                        ForEach(games) { game in
+//                            ForEach(game.awayRoster) { player in
+//                                NavigationLink (destination:DetailedPlayerView(player: player),
+//                                                label: {
+//                                    HStack{
+//                                        WebImage(url: URL(string: player.picture))
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 50, height: 50)
+//                                        VStack{
+//                                            Text("\(player.name)")
+//                                                .font(.subheadline)
+//                                            Text("Age: \(player.age)")
+//                                                .font(.subheadline)
+//                                        }
+//                                    }
+//                                }).buttonStyle(PlainButtonStyle())
+//                                Divider()
+//                            }
+//                        }
+//                    }
                 }
                 
                 Spacer()
@@ -138,19 +138,20 @@ struct DetailedGameView: View {
                 Spacer()
                 Spacer()
                 
-            }.onReceive(timer) {
-                time in
-                if minRemaining >= 0 && secRemaining > 0{
-                    secRemaining -= 1
-                    if secRemaining == 0 && minRemaining >= 1 {
-                        minRemaining -= 1
-                        secRemaining += 59
-                    }
-                }
-            }
+//            }.onReceive(timer) {
+//                time in
+//                if minRemaining >= 0 && secRemaining > 0{
+//                    secRemaining -= 1
+//                    if secRemaining == 0 && minRemaining >= 1 {
+//                        minRemaining -= 1
+//                        secRemaining += 59
+//                    }
+//                }
+//            }
         }
     }
-}
+
+
 
 
 private func getMinutesDifferenceFromTwoDates(start: Date, end: Date) -> Int

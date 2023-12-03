@@ -87,13 +87,13 @@ struct DetailedGameController: View {
                                         Spacer()
                                         HStack {
                                             Spacer()
-                                            WebImage(url: URL(string: game.awayLogo))
+                                            WebImage(url: URL(string: game.away_team_logo))
                                                 .resizable()
                                                 .scaledToFit()
                                                 .frame(width: 50, height: 50)
-                                            Text(game.gender)
+                                            Text(game.sex)
                                             Text("\(game.sport) vs.")
-                                            Text("\(game.away)")
+                                            Text("\(game.away_team_name)")
                                             Image(systemName: "chevron.right")
                                                 .font(.system(size: 20, weight: .bold))
                                             
