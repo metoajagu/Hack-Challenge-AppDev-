@@ -4,27 +4,31 @@
 //
 //  Created by Meto Ajagu on 11/30/23.
 //
-import Foundation
-import SwiftUI
+
+
+
 import Alamofire
 
 
 class NetworkingManager {
     
-   static let shared = NetworkingManager()
-    
-    init() {    }
+    static let shared = NetworkingManager()
+
+  //  private init() {    }
     
     func fetchRoster(completion: @escaping ([Game]) -> Void) {
 //        Make Endpoint URL
-        let endpoint = "http://34.48.20.64/games/1/"
+//        change to /(Sports)
+        let endpoint = "http://34.48.20.64/games/basketball"
+        
 //        Create JSON Decoder
-        let decoder = JSONDecoder()
-        print("Test")
+        
+//        let decoder = JSONDecoder()
 //        Create Request
+        
         AF.request(endpoint, method: .get)
             .validate()
-            .responseDecodable(of: [Game].self, decoder: decoder) {
+            .responseDecodable(of: [Game].self/*, decoder:decoder*/) {
                 response in
                 
                 switch response.result {
@@ -69,34 +73,35 @@ class NetworkingManager {
         
         
     }
+    
+//    func sendRequest(event: Game, completion: @escaping (Game) -> Void) {
+////        Specify endpoint
+//        let endpoint = "http://34.48.20.64/"
+//        
+////        Create Parameters:
+//        let parameters: Parameters = [
+//            "sport": event.sport,
+//            "sex": event.gender,
+//            "location": event.location
+//        ]
+////        Create decoder
+//        let decoder = JSONDecoder()
+//        
+//        AF.request(endpoint, method: .post, parameters: parameters)
+//            .validate()
+//            .responseDecodable(of: Game.self, decoder: decoder) {
+//                response in
+//                switch response.result {
+//                case .success(let event):
+//                    print("Successfully added game \(event.sport), \(event.gender) and \(event.location)")
+//                    completion(event)
+//                case .failure(let error):
+//                    print("Error in NetworkManager.sendRequest:\(error.localizedDescription)")
+//                }
+//            }
+//        
+//    }
 
-    func sendRequest(event: Game, completion: @escaping (Game) -> Void) {
-//        Specify endpoint
-        let endpoint = "http://34.48.20.64/"
-        
-//        Create Parameters:
-        let parameters: Parameters = [
-            "sport": event.sport,
-            "sex": event.sex,
-            "location": event.location
-        ]
-//        Create decoder
-        let decoder = JSONDecoder()
-        
-        AF.request(endpoint, method: .post, parameters: parameters)
-            .validate()
-            .responseDecodable(of: Game.self, decoder: decoder) {
-                response in
-                switch response.result {
-                case .success(let event):
-                    print("Successfully added game \(event.sport), \(event.sex) and \(event.location)")
-                    completion(event)
-                case .failure(let error):
-                    print("Error in NetworkManager.sendRequest:\(error.localizedDescription)")
-                }
-            }
-        
-    }
     
 }
 

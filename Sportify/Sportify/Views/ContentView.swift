@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 import SDWebImageSwiftUI
+import Alamofire
 import SDWebImage
 
 //@State private func fetchRoster() {
@@ -32,13 +33,8 @@ class RosterViewModel: ObservableObject {
 }
 
 struct ContentView: View {
-    
-   //@State private var score: Float = 0.0
-   //let index: Int = 0
-//   @StateObject private var viewModel = RosterViewModel()
-    @State private var data: [Game] = []
-    private let dataManager = NetworkingManager()
-    private let refresh = UIRefreshControl()
+    @StateObject var viewModelC = ViewModel(type: "current")
+    @StateObject var viewModelF = ViewModel(type: "future")
     var body: some View {
         NavigationStack {
             ScrollView(.vertical){
@@ -98,9 +94,11 @@ struct ContentView: View {
                                 .fontWeight(.bold)
                             
                             Divider()
-                        }
+                      }
+                    
                         
-                        List(data, id: \.id) { game in
+
+                        ForEach(viewModelC.games) { game in
                             NavigationLink (
                                 destination: DetailedGameView(event: game),
                                 label: {
@@ -137,14 +135,11 @@ struct ContentView: View {
                                     .padding()
                                 }
                             ).buttonStyle(PlainButtonStyle())
+                           
                         }
-                        .onAppear {
-                            dataManager.fetchRoster{ fetchedData in
-                                data = fetchedData
-                                
-                            }
-                        }
-                        
+                    }
+                    .onAppear {
+                        viewModelC.fetchData()
                     }
                     
                     VStack(alignment: .leading) {
@@ -158,7 +153,8 @@ struct ContentView: View {
                             Divider()
                             
                         }
-                        List(data, id: \.id) { game in
+          
+                        ForEach(viewModelF.games) { game in
                             NavigationLink (
                                 destination: DetailedGameView(event: game),
                                 label: {
@@ -197,6 +193,8 @@ struct ContentView: View {
                                 }
                             ).buttonStyle(PlainButtonStyle())
                         }
+                    } .onAppear() {
+                        viewModelF.fetchData()
                     }
                 }
             }
@@ -267,6 +265,8 @@ struct ContentView: View {
             .clipShape(RoundedRectangle(cornerRadius: 15))
     }
 }
+
+
 
 #Preview {
     ContentView()
