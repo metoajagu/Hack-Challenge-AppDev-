@@ -70,6 +70,7 @@ struct DetailedGameView: View {
                     Text("Location: \(game.location)")
                         .font(.title2)
                 }
+                
                 Text("Stats")
                     .font(.title)
                 Divider()

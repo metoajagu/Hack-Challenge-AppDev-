@@ -118,7 +118,7 @@ struct ContentView: View {
                   .onAppear {
                       viewModelC.fetchData()
 }
-VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
                         VStack(spacing: 0){
                             Text("Upcoming Events")
                                 .font(.largeTitle)

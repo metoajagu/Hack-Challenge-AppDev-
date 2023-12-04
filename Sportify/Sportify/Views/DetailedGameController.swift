@@ -12,8 +12,15 @@ import SDWebImage
 struct DetailedGameController: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
-    @StateObject var viewModelC = ViewModel(type: "current")
-    @StateObject var viewModelF = ViewModel(type: "future")
+    @StateObject var viewModelMC = ViewModel(type: "Mens/current")
+    @StateObject var viewModelMF = ViewModel(type: "Mens/future")
+    
+    @StateObject var viewModelFC = ViewModel(type: "Womens/current")
+    @StateObject var viewModelFF = ViewModel(type: "Womens/future")
+    
+    @State private var isWomensButtonPressed = false
+    @State private var isMensButtonPressed = false
+    
     
     let sportType: String
     
@@ -53,23 +60,27 @@ struct DetailedGameController: View {
                     }
                     HStack{
                         Spacer()
-                        Button("Men's \(sportType)"){}
+                        Button("Men's \(sportType)"){
+                            isMensButtonPressed.toggle()
+                            
+                        }
                         .padding()
                         .background(.gray)
                         .foregroundStyle(.white)
                         .clipShape(Capsule())
                         Spacer()
                         if sportType != "Football"{
-                            Button("Women's \(sportType)"){}
-                                .padding()
-                                .background(.gray)
-                                .foregroundStyle(.white)
-                                .clipShape(Capsule())
+                            Button("Women's \(sportType)"){
+                                isWomensButtonPressed.toggle()
+                            }
+                            .padding()
+                            .background(.gray)
+                            .foregroundStyle(.white)
+                            .clipShape(Capsule())
                         }
-                        
                         Spacer()
-                        
                     }
+    
                     VStack(alignment: .leading) {
                         VStack(spacing: 0){
                             Text("Current Events")
@@ -81,56 +92,95 @@ struct DetailedGameController: View {
                             Divider()
                         }
                         
-                        ForEach(viewModelC.games.filter({$0.sport == sportType})) { game in
-                            NavigationLink (
-                                destination: DetailedGameView(game: game),
-                                label: {
-                                    
-                                    VStack{
-                                        Spacer()
-                                        HStack {
+                        if (isMensButtonPressed == false){
+                            ForEach(viewModelMC.games) { game in
+                                NavigationLink (
+                                    destination: DetailedGameView(game: game),
+                                    label: {
+                                        VStack{
                                             Spacer()
-                                            WebImage(url: URL(string: game.away_team_logo))
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 50, height: 50)
-                                            Text(game.sex)
-                                            Text("\(game.sport) vs.")
-                                            Text("\(game.away_team_name)")
-                                            Image(systemName: "chevron.right")
-                                                .font(.system(size: 20, weight: .bold))
-                                            
+                                            HStack {
+                                                Spacer()
+                                                WebImage(url: URL(string: game.away_team_logo))
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 50, height: 50)
+                                                
+                                                Text("\(game.sex) \(game.sport) vs. \(game.away_team_name)")
+                                                // Text("\(game.away_team_name)")
+                                                Image(systemName: "chevron.right")
+                                                    .font(.system(size: 20, weight: .bold))
+                                                
+                                                Spacer()
+                                            }
+                                            HStack {
+                                                
+                                                Text("\(game.location) ")
+                                                Text("-")
+                                                    .bold()
+                                                Text("7 - 0")
+                                            }
                                             Spacer()
                                         }
-                                        HStack {
-                                            Text("\(game.location) ")
-                                            Text("-")
-                                                .bold()
-                                            //  .multilineTextAlignment(.leading)
-                                            Text("7 - 0")
-                                            //   .font(.headl)
-                                            
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 4)
+                                                .fill(Color.cellBackground)
+                                                .stroke(Color.black, lineWidth: 2)
                                         }
-                                        
-                                        Spacer()
+                                        .padding()
                                     }
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .fill(Color.cellBackground)
-                                            .stroke(Color.black, lineWidth: 2)
-                                    }
-                                    .padding()
-                                    
-                                }
-                            ).buttonStyle(PlainButtonStyle())
-                            
+                                ).buttonStyle(PlainButtonStyle())
+                                
+                            }
                         }
                     }
-                    .onAppear(){
-                        viewModelC.fetchData()
+                  .onAppear {
+                      viewModelMC.fetchData()
+}
+                    VStack{
+                        if (isWomensButtonPressed == false) {
+                            ForEach(viewModelFC.games) { game in
+                                NavigationLink (
+                                    destination: DetailedGameView(game: game),
+                                    label: {
+                                        VStack{
+                                            Spacer()
+                                            HStack {
+                                                Spacer()
+                                                WebImage(url: URL(string: game.away_team_logo))
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 50, height: 50)
+                                                Text("\(game.sex) \(game.sport) vs. \(game.away_team_name)")
+                                                Image(systemName: "chevron.right")
+                                                    .font(.system(size: 20, weight: .bold))
+                                                
+                                                Spacer()
+                                            }
+                                            HStack {
+                                                Text("\(game.location) ")
+                                                Text("-")
+                                                    .bold()
+                                                Text("7 - 0")
+                                            }
+                                            Spacer()
+                                        }
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 4)
+                                                .fill(Color.cellBackground)
+                                                .stroke(Color.black, lineWidth: 2)
+                                        }
+                                        .padding()
+                                    }
+                                ).buttonStyle(PlainButtonStyle())
+                            }
+                        }
                     }
-
-                        
+                .onAppear() {
+                    viewModelFC.fetchData()
+                }
+                    
+                    VStack{
                         VStack(alignment: .leading) {
                             VStack(spacing: 0){
                                 Text("Upcoming Events")
@@ -140,13 +190,55 @@ struct DetailedGameController: View {
                                     .fontWeight(.bold)
                                 
                                 Divider()
+                                
                             }
-                            
-                            ForEach(viewModelF.games.filter({$0.sport == sportType})) { game in
+                            if (isWomensButtonPressed == false) {
+                                ForEach(viewModelFF.games) { game in
+                                    NavigationLink (
+                                        destination: DetailedGameView(game: game),
+                                        label: {
+                                            VStack{
+                                                Spacer()
+                                                HStack {
+                                                    Spacer()
+                                                    WebImage(url: URL(string: game.away_team_logo))
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 50, height: 50)
+                                                    Text("\(game.sex) \(game.sport) vs. \(game.away_team_name)")
+                                                    Image(systemName: "chevron.right")
+                                                        .font(.system(size: 20, weight: .bold))
+                                                    
+                                                    Spacer()
+                                                }
+                                                HStack {
+                                                    
+                                                    Text("\(game.location) -")
+                                                        .multilineTextAlignment(.leading)
+                                                    Text("\(game.date_time.formatted(date: .long, time: .shortened))")
+                                                }
+                                                Spacer()
+                                            }
+                                            .background {
+                                                RoundedRectangle(cornerRadius: 4)
+                                                    .fill(Color.cellBackground)
+                                                    .stroke(Color.black, lineWidth: 2)
+                                            }
+                                            .padding()
+                                        }
+                                    ).buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                        }
+                        .onAppear() {
+                            viewModelFF.fetchData()
+                        }
+                        
+                        if (isMensButtonPressed == false) {
+                            ForEach(viewModelMC.games) { game in
                                 NavigationLink (
                                     destination: DetailedGameView(game: game),
                                     label: {
-                                        
                                         VStack{
                                             Spacer()
                                             HStack {
@@ -155,9 +247,7 @@ struct DetailedGameController: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 50, height: 50)
-                                                Text(game.sex)
-                                                Text("\(game.sport) vs.")
-                                                Text("\(game.away_team_name)")
+                                                Text("\(game.sex) \(game.sport) vs. \(game.away_team_name)")
                                                 Image(systemName: "chevron.right")
                                                     .font(.system(size: 20, weight: .bold))
                                                 
@@ -169,7 +259,6 @@ struct DetailedGameController: View {
                                                     .multilineTextAlignment(.leading)
                                                 Text("\(game.date_time.formatted(date: .long, time: .shortened))")
                                             }
-                                            
                                             Spacer()
                                         }
                                         .background {
@@ -178,19 +267,15 @@ struct DetailedGameController: View {
                                                 .stroke(Color.black, lineWidth: 2)
                                         }
                                         .padding()
-                                        
                                     }
                                 ).buttonStyle(PlainButtonStyle())
-                                
                             }
                         }
-                        .onAppear(){
-                            viewModelF.fetchData()
-                        }
-                    
-                            
+                    }
+                    .onAppear() {
+                    viewModelMC.fetchData()
+                }
                         
-                        // Spacer()
                         .navigationBarBackButtonHidden(true)
                         .toolbar(content: {
                             ToolbarItem (placement: .bottomBar)  {
@@ -204,13 +289,12 @@ struct DetailedGameController: View {
                                     Text("home")
                                         .foregroundColor(.black)
                                 })
-                                
-                                
-                                
                             }
                         })
-                    }
+                        
                     
+                    
+                    }
                 }
             }
         }
