@@ -87,9 +87,9 @@ struct ContentView: View {
                                                 .resizable()
                                                 .scaledToFit()
                                                 .frame(width: 50, height: 50)
-                                            Text(game.sex)
-                                            Text("\(game.sport) vs.")
-                                            Text("\(game.away_team_name)")
+                                           
+                                            Text("\(game.sex) \(game.sport) vs. \(game.away_team_name)")
+                                           // Text("\(game.away_team_name)")
                                             Image(systemName: "chevron.right")
                                                 .font(.system(size: 20, weight: .bold))
                                             
@@ -142,9 +142,7 @@ VStack(alignment: .leading) {
                                                 .resizable()
                                                 .scaledToFit()
                                                 .frame(width: 50, height: 50)
-                                            Text(game.sex)
-                                            Text("\(game.sport) vs.")
-                                            Text("\(game.away_team_name)")
+                                            Text("\(game.sex) \(game.sport) vs. \(game.away_team_name)")
                                             Image(systemName: "chevron.right")
                                                 .font(.system(size: 20, weight: .bold))
                         

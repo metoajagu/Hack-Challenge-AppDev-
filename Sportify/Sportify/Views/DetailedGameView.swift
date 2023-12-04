@@ -11,6 +11,7 @@ import SDWebImage
 struct DetailedGameView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     let game: Game
+    @Environment(\.openURL) var openURL
     
     @State private var minRemaining: Int
     @State private var secRemaining = 59
@@ -77,14 +78,36 @@ struct DetailedGameView: View {
                     .font(.title)
                 Divider()
                 
-            }
-            VStack{
-                HStack {
-                    VStack{
-                        ForEach(game.home_roster) { player in
-                            NavigationLink (
-                                destination:DetailedPlayerView(player: player),
-                                label: {
+                
+                VStack{
+                    HStack {
+                        VStack{
+                            ForEach(game.home_roster) { player in
+                                NavigationLink (
+                                    destination:DetailedPlayerView(player: player),
+                                    label: {
+                                        HStack{
+                                            WebImage(url: URL(string: player.picture))
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 50, height: 50)
+                                            VStack{
+                                                Text("\(player.name)")
+                                                    .font(.subheadline)
+                                                Text("Age: \(player.age)")
+                                                    .font(.subheadline)
+                                            }
+                                        }
+                                    }).buttonStyle(PlainButtonStyle())
+                                
+                                Divider()
+                            }
+                        }
+                        
+                        VStack {
+                            ForEach(game.away_roster) { player in
+                                NavigationLink (destination:DetailedPlayerView(player: player),
+                                                label: {
                                     HStack{
                                         WebImage(url: URL(string: player.picture))
                                             .resizable()
@@ -98,32 +121,39 @@ struct DetailedGameView: View {
                                         }
                                     }
                                 }).buttonStyle(PlainButtonStyle())
-                            
-                            Divider()
+                                Divider()
+                            }
                         }
                     }
-                    VStack {
-                        ForEach(game.away_roster) { player in
-                            NavigationLink (destination:DetailedPlayerView(player: player),
-                                            label: {
-                                HStack{
-                                    WebImage(url: URL(string: player.picture))
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 50, height: 50)
-                                    VStack{
-                                        Text("\(player.name)")
-                                            .font(.subheadline)
-                                        Text("Age: \(player.age)")
-                                            .font(.subheadline)
-                                    }
+                    
+                    ScrollView(.horizontal){
+                        HStack(){
+                        
+                            if (game.sport == "Hockey")
+                            {
+                                Button("Buy Tickets") {
+                                    openURL(URL(string: "https://lakeplacidolympiccenter.showare.com/orderticketsvenue.asp?p=1&_ga=2.164795644.2739054.1701643152-1048043419.1696726989")!)
                                 }
-                            }).buttonStyle(PlainButtonStyle())
-                            Divider()
+                                    .padding()
+                                    .background(Color.sportBackground)
+                                    .foregroundStyle(.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                                Button("Attending?"){}
+                                    .padding()
+                                    .background(Color.cellBackground)
+                                    .foregroundStyle(.black)
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                                
+                                Text("Tickets Remaining: ")
+                                    .padding()
+                                    .background(Color.sportBackground)
+                                    .foregroundStyle(.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                            }
                         }
                     }
+                    Spacer()
                 }
-                Spacer()
             }
               
 }  .onReceive(timer) {

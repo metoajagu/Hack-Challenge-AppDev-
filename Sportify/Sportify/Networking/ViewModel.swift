@@ -41,6 +41,11 @@ class ViewModel: ObservableObject {
             }
         }
     }
+    
+    func changeTix() {
+        
+    }
+    
 // end
    }
 

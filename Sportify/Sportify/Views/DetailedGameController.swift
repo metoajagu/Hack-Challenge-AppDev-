@@ -53,9 +53,7 @@ struct DetailedGameController: View {
                     }
                     HStack{
                         Spacer()
-                        Button("Men's \(sportType)"){
-                            
-                        }
+                        Button("Men's \(sportType)"){}
                         .padding()
                         .background(.gray)
                         .foregroundStyle(.white)
@@ -189,7 +187,8 @@ struct DetailedGameController: View {
                         .onAppear(){
                             viewModelF.fetchData()
                         }
-                        
+                    
+                            
                         
                         // Spacer()
                         .navigationBarBackButtonHidden(true)
